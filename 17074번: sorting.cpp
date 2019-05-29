@@ -4,14 +4,14 @@ using namespace std;
 int arr[100000];
 int n;
 
-int find() {
+int find() {//수 찾기
 	int i;
-	int cnt = 0;
-	int down = 0;
+	int cnt = 0;//뺄 수 있는 수 기록
+	int down = 0;//작아지는 수 기록
 
 
 	for (i = 0; i < n-1; i++) {
-		if (arr[i] > arr[i + 1]) {//µÞ ¼ö°¡ ´õ ÀÛÀº °æ¿ì
+		if (arr[i] > arr[i + 1]) {//숫자가 작아질 시 
 			down++;
 			if (down > 1) {
 				return 0;
