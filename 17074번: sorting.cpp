@@ -4,14 +4,14 @@ using namespace std;
 int arr[100000];
 int n;
 
-int find() {//¼ö Ã£±â
+int find() {//ìˆ˜ ì°¾ê¸°
 	int i;
-	int cnt = 0;//»¬ ¼ö ÀÖ´Â ¼ö ±â·Ï
-	int down = 0;//ÀÛ¾ÆÁö´Â ¼ö ±â·Ï
+	int cnt = 0;//ëº„ ìˆ˜ ìˆëŠ” ìˆ˜ ê¸°ë¡
+	int down = 0;//ì‘ì•„ì§€ëŠ” ìˆ˜ ê¸°ë¡
 
 
 	for (i = 0; i < n - 1; i++) {
-		if (arr[i] > arr[i + 1]) {//¼ıÀÚ°¡ ÀÛ¾ÆÁú ½Ã 
+		if (arr[i] > arr[i + 1]) {//ìˆ«ìê°€ ì‘ì•„ì§ˆ ì‹œ 
 			down++;
 			if (down > 1) {
 				return 0;
