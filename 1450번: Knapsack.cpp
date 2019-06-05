@@ -8,10 +8,10 @@ int n, c;
 
 vector<int> v1, v2;
 
-void dfs(int start, int end, int sum, vector<int>& v) {//vector¿¡ &¸¦ ºÙ¿©Áà¾ß ¸Å°³º¯¼ö·Î ÀúÀåµÇ¾î dfs¿¡ ÀúÀåµÈ´Ù. ¾È ±×·¯¸é ¹Ù·Î ÇÔ¼ö ¹ş¾î³ªÀÚ¸¶ÀÚ ¹Ù·Î »ç¶óÁø´Ù!!!
-	if (sum > c)//¸ÕÀú Á¶°ÇÀÌ ³ª¿Í¾ß a==n && sum>cÀÎ Á¶°ÇÀÌ °ãÄ¡Áö ¾Ê´Â´Ù.
+void dfs(int start, int end, int sum, vector<int>& v) {//vectorì— &ë¥¼ ë¶™ì—¬ì¤˜ì•¼ ë§¤ê°œë³€ìˆ˜ë¡œ ì €ì¥ë˜ì–´ dfsì— ì €ì¥ëœë‹¤. ì•ˆ ê·¸ëŸ¬ë©´ ë°”ë¡œ í•¨ìˆ˜ ë²—ì–´ë‚˜ìë§ˆì ë°”ë¡œ ì‚¬ë¼ì§„ë‹¤!!!
+	if (sum > c)//ë¨¼ì € ì¡°ê±´ì´ ë‚˜ì™€ì•¼ a==n && sum>cì¸ ì¡°ê±´ì´ ê²¹ì¹˜ì§€ ì•ŠëŠ”ë‹¤.
 		return;
-	if (start > end) {//³¡±îÁö µµ´ŞÇßÀ»½Ã °ª ÀúÀå
+	if (start > end) {//ëê¹Œì§€ ë„ë‹¬í–ˆì„ì‹œ ê°’ ì €ì¥
 		v.push_back(sum);
 		return;
 	}
@@ -32,10 +32,10 @@ int main() {
 		cin >> goods[i];
 	}
 
-	//ÇÙ½É: 2^30Àº ³Ê¹« ¿À·¡ °É¸®±â ¶§¹®¿¡ ¹İÀ¸·Î ÂÉ°³¼­ 2*2^15·Î ¸¸µç´Ù
+	//í•µì‹¬: 2^30ì€ ë„ˆë¬´ ì˜¤ë˜ ê±¸ë¦¬ê¸° ë•Œë¬¸ì— ë°˜ìœ¼ë¡œ ìª¼ê°œì„œ 2*2^15ë¡œ ë§Œë“ ë‹¤
 	dfs(0, n / 2 - 1, 0, v1);
 	dfs(n / 2, n - 1, 0, v2);
-	sort(v1.begin(), v1.end());//°¡ÁöÄ¡±â À§ÇØ »ç¿ë
+	sort(v1.begin(), v1.end());//ê°€ì§€ì¹˜ê¸° ìœ„í•´ ì‚¬ìš©
 	sort(v2.begin(), v2.end());
 	/*for (vector<int>::size_type j = 0; j < v1.size(); j++)
 		cout << v1[j] << ' ';
@@ -45,7 +45,7 @@ int main() {
 		cout << v2[k] << ' ';
 	cout << endl;*/
 
-	for (vector<int>::size_type j = 0; j < v1.size(); j++) {//µÎ°³ ÇÕÇØ¼­ sum ³Ñ¾î°¡Áö ¾ÊÀ¸¸é Á¶°Ç ¸¸Á·, cnt¿¡ ´õÇÑ´Ù.
+	for (vector<int>::size_type j = 0; j < v1.size(); j++) {//ë‘ê°œ í•©í•´ì„œ sum ë„˜ì–´ê°€ì§€ ì•Šìœ¼ë©´ ì¡°ê±´ ë§Œì¡±, cntì— ë”í•œë‹¤.
 		for (vector<int>::size_type k = 0; k < v2.size(); k++) {
 			if (v1[j] + v2[k] <= c) {
 				cnt++;
