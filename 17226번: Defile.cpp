@@ -12,7 +12,7 @@ typedef struct {
 	bool isAttacked;
 }minions;
 
-//pair<int, int> player;//100Á¡
+//pair<int, int> player;//100ì 
 //minions player;
 
 
@@ -26,7 +26,7 @@ void copyMin(minions copy[8], minions origin[8], int num) {
 	}
 }
 
-//¹Ì´Ï¾ğ °ø°İ
+//ë¯¸ë‹ˆì–¸ ê³µê²©
 void attack(minions& p, minions& o) {
 	p.vital -= o.power;
 	if (p.vital <= 0)
@@ -37,12 +37,12 @@ void attack(minions& p, minions& o) {
 		o.isDead = true;
 }
 
-//¸ğµ¶ »ç¿ë
+//ëª¨ë… ì‚¬ìš©
 void defile(minions player[8], minions opponent[8]) {
 	int i;
 	bool isDead = true;
 
-	//¸ğµ¶ ¸ŞÄ«´ÏÁò
+	//ëª¨ë… ë©”ì¹´ë‹ˆì¦˜
 	while (isDead) {
 		isDead = false;
 		for (i = 1; i <= myMin; i++) {
@@ -80,12 +80,12 @@ void calculate(int order[8], int cnt) {
 	}
 }
 
-void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool defileUsed) {//order: °ø°İ ¹× ¸ğµ¶ »ç¿ë ±â·Ï, cnt: order ¼ö ´Ã¸®±â
+void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool defileUsed) {//order: ê³µê²© ë° ëª¨ë… ì‚¬ìš© ê¸°ë¡, cnt: order ìˆ˜ ëŠ˜ë¦¬ê¸°
 	int i, j;
 	minions tmpPlayer[8];
 	minions tmpOppo[8];
 
-	//È®ÀÎ
+	//í™•ì¸
 	for (i = 0; i < cnt; i++)
 		cout << order[i] << ' ';
 	cout << endl;
@@ -102,7 +102,7 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 
 	cout << " ==================================================== " << endl;
 
-	if (win)//ÇÏ³ª¶óµµ ¼º°ø½Ã ³¡³»±â
+	if (win)//í•˜ë‚˜ë¼ë„ ì„±ê³µì‹œ ëë‚´ê¸°
 		return;
 
 	if (opoMin == 0) {
@@ -110,12 +110,12 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 		return;
 	}
 
-	//Àû ¸ô»ì ¼º°ø È®ÀÎ
+	//ì  ëª°ì‚´ ì„±ê³µ í™•ì¸
 	for (i = 1; i <= opoMin; i++) {
 		if (!opponent[i].isDead)
 			break;
 		
-		if (i == opoMin) {//¼º°ø Á¶°Ç
+		if (i == opoMin) {//ì„±ê³µ ì¡°ê±´
 			win = true;
 			cout << cnt << endl;
 			calculate(order, cnt);
@@ -124,7 +124,7 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 	}
 
 
-	//¸ğµ¶ »ç¿ë, ³» ÇÏ¼öÀÎ »ç¸Á ¶Ç´Â °ø°İ ´ÙÇÑ ÈÄ Àû ÇÏ¼öÀÎ »ì¾ÆÀÖÀ½ ½ÇÆĞ
+	//ëª¨ë… ì‚¬ìš©, ë‚´ í•˜ìˆ˜ì¸ ì‚¬ë§ ë˜ëŠ” ê³µê²© ë‹¤í•œ í›„ ì  í•˜ìˆ˜ì¸ ì‚´ì•„ìˆìŒ ì‹¤íŒ¨
 	for (i = 1; i <= myMin; i++) {
 		if (!player[i].isDead || !player[i].isAttacked || defileUsed == false)
 			break;
@@ -144,21 +144,21 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 	
 
 	for (i = 1; i <= myMin; i++) {
-		if (!defileUsed) {//¸ğµ¶ »ç¿ëÇÏÁö ¾Ê¾ÒÀ» ½Ã
-		//¸ğµ¶ »ç¿ë
+		if (!defileUsed) {//ëª¨ë… ì‚¬ìš©í•˜ì§€ ì•Šì•˜ì„ ì‹œ
+		//ëª¨ë… ì‚¬ìš©
 			defile(tmpPlayer, tmpOppo);
 			order[cnt] = -1;
 			myTurn(tmpPlayer, tmpOppo, order, cnt + 1, true);
 
-			//¹éÆ®·¡Å·
+			//ë°±íŠ¸ë˜í‚¹
 			order[cnt] = 0;
 		}
 
-		if (!tmpPlayer[i].isAttacked && !tmpPlayer[i].isDead) {//°ø°İÇÏÁö ¾Ê°í Á×Áöµµ ¾Ê¾ÒÀ¸¸é player ¹Ì´Ï¾ğÀÌ °ø°İ °¡´É
+		if (!tmpPlayer[i].isAttacked && !tmpPlayer[i].isDead) {//ê³µê²©í•˜ì§€ ì•Šê³  ì£½ì§€ë„ ì•Šì•˜ìœ¼ë©´ player ë¯¸ë‹ˆì–¸ì´ ê³µê²© ê°€ëŠ¥
 			//cout << "Here" << endl;
 			for (j = 1; j <= opoMin; j++) {
-				if (!tmpOppo[j].isDead) {//ÀûÀÌ Á×Áö ¾Ê¾Ò´Ù¸é °ø°İ °¡´É
-					//°ø°İ
+				if (!tmpOppo[j].isDead) {//ì ì´ ì£½ì§€ ì•Šì•˜ë‹¤ë©´ ê³µê²© ê°€ëŠ¥
+					//ê³µê²©
 					int tmpVital1 = tmpPlayer[i].vital;
 					int tmpVital2 = tmpOppo[j].vital;
 
@@ -167,7 +167,7 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 					order[cnt] = i * 10 + j;
 					myTurn(tmpPlayer, tmpOppo, order, cnt + 1, defileUsed);
 
-					//¹éÆ®·¡Å·
+					//ë°±íŠ¸ë˜í‚¹
 					tmpPlayer[i].vital = tmpVital1;
 					tmpOppo[j].vital = tmpVital2;
 					tmpPlayer[i].isAttacked = false;
