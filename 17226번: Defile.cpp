@@ -12,9 +12,6 @@ typedef struct {
 	bool isAttacked;
 }minions;
 
-//pair<int, int> player;//100점
-//minions player;
-
 
 void copyMin(minions copy[8], minions origin[8], int num) {
 	int i;
@@ -28,6 +25,8 @@ void copyMin(minions copy[8], minions origin[8], int num) {
 
 //미니언 공격
 void attack(minions& p, minions& o) {
+	p.isAttacked = true;
+
 	p.vital -= o.power;
 	if (p.vital <= 0)
 		p.isDead = true;
@@ -85,8 +84,9 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 	minions tmpPlayer[8];
 	minions tmpOppo[8];
 
+
 	//확인
-	for (i = 0; i < cnt; i++)
+	/*for (i = 0; i < cnt; i++)
 		cout << order[i] << ' ';
 	cout << endl;
 
@@ -98,16 +98,30 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 	for (i = 1; i <= opoMin; i++) {
 		cout << "Opponent " << i << ": [" << opponent[i].power << ", " << opponent[i].vital << ']' << endl;
 	}
-	cout << endl;
 
-	cout << " ==================================================== " << endl;
+	cout << " ==================================================== " << endl;*/
+	
 
 	if (win)//하나라도 성공시 끝내기
 		return;
 
-	if (opoMin == 0) {
+	if (opoMin == 0) {//만약 적 미니언 없을 시 0회로 걍 성공
 		cout << 0 << endl;
 		return;
+	}
+	else if (myMin == 0) {//만약 내 미니언이 없을 시 모독 사용으로 바로 정리되는지 확인
+		defile(player, opponent);
+		for (i = 1; i <= opoMin; i++) {
+			if (!opponent[i].isDead)
+				return;
+
+			if (i == opoMin) {
+				win = true;
+				cout << 1 << endl;
+				cout << "use modok" << endl;
+				return;
+			}
+		}
 	}
 
 	//적 몰살 성공 확인
@@ -123,57 +137,51 @@ void myTurn(minions player[8], minions opponent[8],int order[8], int cnt, bool d
 		}
 	}
 
+	
 
-	//모독 사용, 내 하수인 사망 또는 공격 다한 후 적 하수인 살아있음 실패
+
+	//모독 사용, 내 하수인 모두 사망 또는 공격 다한 후 적 하수인 살아있음 실패
 	for (i = 1; i <= myMin; i++) {
 		if (!player[i].isDead || !player[i].isAttacked || defileUsed == false)
 			break;
 
 		if (i == myMin) {
-			for (j = 0; j < opoMin; i++) {
-				if (!opponent[i].isDead) {
+			for (j = 1; j <= opoMin; j++) {
+				if (!opponent[j].isDead) {
 					return;
 				}
 			}
 		}
 	}
 
-	
 	copyMin(tmpPlayer, player, myMin);
 	copyMin(tmpOppo, opponent, opoMin);
 	
 
 	for (i = 1; i <= myMin; i++) {
 		if (!defileUsed) {//모독 사용하지 않았을 시
-		//모독 사용
-			defile(tmpPlayer, tmpOppo);
+			//모독 사용
+			defile(player, opponent);
 			order[cnt] = -1;
-			myTurn(tmpPlayer, tmpOppo, order, cnt + 1, true);
+			myTurn(player, opponent, order, cnt + 1, true);
 
 			//백트래킹
+			copyMin(player, tmpPlayer, myMin);
+			copyMin(opponent, tmpOppo, opoMin);
 			order[cnt] = 0;
 		}
 
-		if (!tmpPlayer[i].isAttacked && !tmpPlayer[i].isDead) {//공격하지 않고 죽지도 않았으면 player 미니언이 공격 가능
-			//cout << "Here" << endl;
+		if (!player[i].isAttacked && !player[i].isDead) {//공격하지 않고 죽지도 않았으면 player 미니언이 공격 가능
 			for (j = 1; j <= opoMin; j++) {
-				if (!tmpOppo[j].isDead) {//적이 죽지 않았다면 공격 가능
+				if (!opponent[j].isDead) {//적이 죽지 않았다면 공격 가능
 					//공격
-					int tmpVital1 = tmpPlayer[i].vital;
-					int tmpVital2 = tmpOppo[j].vital;
-
-					attack(tmpPlayer[i], tmpOppo[j]);
-					tmpPlayer[i].isAttacked = true;
+					attack(player[i], opponent[j]);
 					order[cnt] = i * 10 + j;
-					myTurn(tmpPlayer, tmpOppo, order, cnt + 1, defileUsed);
+					myTurn(player, opponent, order, cnt + 1, defileUsed);
 
 					//백트래킹
-					tmpPlayer[i].vital = tmpVital1;
-					tmpOppo[j].vital = tmpVital2;
-					tmpPlayer[i].isAttacked = false;
-					tmpPlayer[i].isDead = false;
-					tmpOppo[i].isDead = false;
-
+					copyMin(player, tmpPlayer, myMin);
+					copyMin(opponent, tmpOppo, opoMin);
 					order[cnt] = 0;
 				}
 			}
