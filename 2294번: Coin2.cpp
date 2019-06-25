@@ -13,12 +13,12 @@ int coinCnt(int k) {
 		return 0;
 	
 	
-	if (dp[k] != -1)//ÀÌ¹Ì °è»ê½Ã dp¿¡ ÀúÀåµÈ °ÍÀ» °¡Á®¿Â´Ù
+	if (dp[k] != -1)//ì´ë¯¸ ê³„ì‚°ì‹œ dpì— ì €ì¥ëœ ê²ƒì„ ê°€ì ¸ì˜¨ë‹¤
 		return dp[k];
 
-	int result = MAX;//°á°ú°ªÀº 10000º¸´Ù ÀÛ°Å³ª °°±â ¶§¹®¿¡ MAX¸¦ ³Ñ±æ ¼ö ¾ø´Ù.
+	int result = MAX;//ê²°ê³¼ê°’ì€ 10000ë³´ë‹¤ ì‘ê±°ë‚˜ ê°™ê¸° ë•Œë¬¸ì— MAXë¥¼ ë„˜ê¸¸ ìˆ˜ ì—†ë‹¤.
 	for (i = 0; i < n; i++) {
-		if (k - coin[i] >= 0)//À½¼ö°¡ µÇ¸é ¾ÈµÊ
+		if (k - coin[i] >= 0)//ìŒìˆ˜ê°€ ë˜ë©´ ì•ˆë¨
 			result = min(result, coinCnt(k - coin[i]) + 1);
 	}
 
@@ -38,7 +38,7 @@ int main() {
 	fill(dp, dp + MAX, -1);
 	result = coinCnt(k);
 
-	if (result != MAX)//MAX°ª ³ª¿Â´Ù¸é ³ª¿Ã ¼ö ¾ø´Â °ªÀÌ ³ª¿Â °Í.
+	if (result != MAX)//MAXê°’ ë‚˜ì˜¨ë‹¤ë©´ ë‚˜ì˜¬ ìˆ˜ ì—†ëŠ” ê°’ì´ ë‚˜ì˜¨ ê²ƒ.
 		cout << result << '\n';
 	else
 		cout << -1 << '\n';
