@@ -3,14 +3,14 @@
 using namespace std;
 const int MAX = 102;
 
-int dp[102][100002] = { 0 };//¹«°Ô ¸î¿¡ ´ëÇØ ¾òÀ» ¼ö ÀÖ´Â ÃÖ´ë °¡Ä¡ ±â·Ï
+int dp[102][100002] = { 0 };//ë¬´ê²Œ ëª‡ì— ëŒ€í•´ ì–»ì„ ìˆ˜ ìžˆëŠ” ìµœëŒ€ ê°€ì¹˜ ê¸°ë¡
 int value[MAX];
 int weight[MAX];
 
 
 int main() {
-	int n;//¹°Ç° °³¼ö
-	int k;//ÃÖ´ë ¹«°Ô
+	int n;//ë¬¼í’ˆ ê°œìˆ˜
+	int k;//ìµœëŒ€ ë¬´ê²Œ
 	int i, j;
 
 	cin >> n >> k;
