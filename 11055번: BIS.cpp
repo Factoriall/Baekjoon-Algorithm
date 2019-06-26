@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 	int n;
-	int arr[1001];
+	int arr[1001];//100
 	int dp[1001];
 	int i, j;
 	int ans = 0;
