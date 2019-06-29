@@ -6,7 +6,7 @@ using namespace std;
 string funct;
 stack<char> s;
 
-bool Pred(char f) {//Á¶°Ç: ºñ¾îÀÖ°Å³ª ¿­¸° °ýÈ£°Å³ª ¿ì¼±¼øÀ§¿¡¼­ ³ô°Å³ª
+bool Pred(char f) {//ì¡°ê±´: ë¹„ì–´ìžˆê±°ë‚˜ ì—´ë¦° ê´„í˜¸ê±°ë‚˜ ìš°ì„ ìˆœìœ„ì—ì„œ ë†’ê±°ë‚˜
 	if (s.empty() || s.top() == '(' || ((f == '*' || f == '/') && (s.top() == '+' || s.top() == '-')))
 		return true;
 	else
@@ -20,20 +20,20 @@ int main() {
 	cin >> funct;
 
 	for (i = 0; i < funct.size(); i++) {
-		if (funct[i] == '(')//¿­¸° °ýÈ£¸é push
+		if (funct[i] == '(')//ì—´ë¦° ê´„í˜¸ë©´ push
 			s.push('(');
 
-		else if (funct[i] == ')') {//´ÝÈù °ýÈ£¸é ¿­¸° °ýÈ£ ³ª¿Ã¶§±îÁö pop
+		else if (funct[i] == ')') {//ë‹«ížŒ ê´„í˜¸ë©´ ì—´ë¦° ê´„í˜¸ ë‚˜ì˜¬ë•Œê¹Œì§€ pop
 			while (s.top() != '(') {
 				cout << s.top();
 				s.pop();
 			}
 			s.pop();
 		}
-		else if (funct[i] == '+' || funct[i] == '-' || funct[i] == '*' || funct[i] == '/') {//»çÄ¢¿¬»êÀÏ½Ã
-			if (Pred(funct[i]))//Á¶°Ç ¸ÂÀ¸¸é push
+		else if (funct[i] == '+' || funct[i] == '-' || funct[i] == '*' || funct[i] == '/') {//ì‚¬ì¹™ì—°ì‚°ì¼ì‹œ
+			if (Pred(funct[i]))//ì¡°ê±´ ë§žìœ¼ë©´ push
 				s.push(funct[i]);
-			else {//Á¶°Ç ¾È ¸ÂÀ¸¸é Á¶°Ç ¸ÂÀ»¶§±îÁö pop ÈÄ push
+			else {//ì¡°ê±´ ì•ˆ ë§žìœ¼ë©´ ì¡°ê±´ ë§žì„ë•Œê¹Œì§€ pop í›„ push
 				while (!Pred(funct[i])) {
 					cout << s.top();
 					s.pop();
@@ -41,10 +41,10 @@ int main() {
 				s.push(funct[i]);
 			}
 		}
-		else//ÇÇ¿¬»êÀÚÀÏ½Ã °Á Ãâ·Â
+		else//í”¼ì—°ì‚°ìžì¼ì‹œ ê± ì¶œë ¥
 			cout << funct[i];
 	}
-	while (!s.empty()) {//³¡ µµ´Þ½Ã ¸ðµç stack ³»¿ë¹° pop
+	while (!s.empty()) {//ë ë„ë‹¬ì‹œ ëª¨ë“  stack ë‚´ìš©ë¬¼ pop
 		cout << s.top();
 		s.pop();
 	}
