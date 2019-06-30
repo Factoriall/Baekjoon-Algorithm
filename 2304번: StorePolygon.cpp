@@ -4,7 +4,7 @@
 #include <stack>
 using namespace std;
 
-vector<pair<int, int>> pillar;//first - xÁÂÇ¥, second - ³ôÀÌ 
+vector<pair<int, int>> pillar;//first - xì¢Œí‘œ, second - ë†’ì´ 
 stack<pair<int, int>> s1;
 stack<pair<int, int>> s2;
 
@@ -19,18 +19,18 @@ int main() {
 
 	cin >> n;
 
-	pair<int, int> tmp;//pillar vector¿¡ ÀúÀåÇÏ±â À§ÇÑ ÀÓ½Ã pair º¯¼ö
-	for (i = 0; i < n; i++) {//ÀúÀå
+	pair<int, int> tmp;//pillar vectorì— ì €ì¥í•˜ê¸° ìœ„í•œ ì„ì‹œ pair ë³€ìˆ˜
+	for (i = 0; i < n; i++) {//ì €ì¥
 		cin >> tmp.first >> tmp.second;
 		pillar.push_back(tmp);
 	}
 
-	sort(pillar.begin(), pillar.end(), cmp);//xÁÂÇ¥ ¼ø¼­¿¡ ¸Â°Ô Á¤·Ä
+	sort(pillar.begin(), pillar.end(), cmp);//xì¢Œí‘œ ìˆœì„œì— ë§ê²Œ ì •ë ¬
 		
 	/*for (i = 0; i < pillar.size(); i++)
 		cout << '[' << pillar[i].first << ", " << pillar[i].second << ']' << endl;*/
 	
-	//¿ŞÂÊºÎÅÍ ¿À¸¥ÂÊÀ¸·Î Á÷»ç°¢Çü ´õÇÏ±â
+	//ì™¼ìª½ë¶€í„° ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì§ì‚¬ê°í˜• ë”í•˜ê¸°
 	s1.push(pillar[0]);
 	for (i = 1; i < n; i++) {
 		if (s1.top().second < pillar[i].second) {
@@ -39,7 +39,7 @@ int main() {
 		}
 	}
 
-	//¿À¸¥ÂÊºÎÅÍ ¿ŞÂÊÀ¸·Î °¡¸é¼­ Á÷»ç°¢Çü ´õÇÏ±â
+	//ì˜¤ë¥¸ìª½ë¶€í„° ì™¼ìª½ìœ¼ë¡œ ê°€ë©´ì„œ ì§ì‚¬ê°í˜• ë”í•˜ê¸°
 	s2.push(pillar[n - 1]);
 	for (i = n-2; i >= 0; i--) {
 		if (s2.top().second < pillar[i].second) {
@@ -48,7 +48,7 @@ int main() {
 		}
 	}
 
-	//¸¶Áö¸·À¸·Î s1, s2 Å¾ ³ôÀÌ(°°À½) * ±× µÑÀÇ xÁÂÇ¥ Â÷ÀÌ·Î ³ª¸ÓÁö °ª ±¸ÇÏ±â.
+	//ë§ˆì§€ë§‰ìœ¼ë¡œ s1, s2 íƒ‘ ë†’ì´(ê°™ìŒ) * ê·¸ ë‘˜ì˜ xì¢Œí‘œ ì°¨ì´ë¡œ ë‚˜ë¨¸ì§€ ê°’ êµ¬í•˜ê¸°.
 	size += s1.top().second * (s2.top().first - s1.top().first + 1);
 
 	cout << size << '\n';
