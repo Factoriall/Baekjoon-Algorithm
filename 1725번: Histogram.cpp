@@ -3,10 +3,10 @@
 #include <algorithm>
 using namespace std;
 
-stack<pair<int, int>> s;//first - xÁÂÇ¥, second - ³ôÀÌ
+stack<pair<int, int>> s;//first - xì¢Œí‘œ, second - ë†’ì´
 int histo[100001];
 
-bool Pred(int i) {//Á¶°ÇÀÚ - ½ºÅÃÀÌ ºñ¾îÀÖ°Å³ª Áö±İ ³ôÀÌ°¡ ½ºÅÃ ¸Ç À§ÀÇ ³ôÀÌº¸´Ù Å¬ ½Ã true
+bool Pred(int i) {//ì¡°ê±´ì - ìŠ¤íƒì´ ë¹„ì–´ìˆê±°ë‚˜ ì§€ê¸ˆ ë†’ì´ê°€ ìŠ¤íƒ ë§¨ ìœ„ì˜ ë†’ì´ë³´ë‹¤ í´ ì‹œ true
 	if (s.empty() || histo[i] > s.top().second)
 		return true;
 	else
@@ -14,18 +14,18 @@ bool Pred(int i) {//Á¶°ÇÀÚ - ½ºÅÃÀÌ ºñ¾îÀÖ°Å³ª Áö±İ ³ôÀÌ°¡ ½ºÅÃ ¸Ç À§ÀÇ ³ôÀÌº¸´Ù
 }
 
 int main() {
-	int n;//ÁÂÇ¥ °³¼ö	
-	int i;//¹İº¹ÀÚ
+	int n;//ì¢Œí‘œ ê°œìˆ˜	
+	int i;//ë°˜ë³µì
 	int result = 0;
 	int x, h, l;
-	//x: Áö±İ °¡·Î À§Ä¡, h=³ôÀÌ, ¤Ó=Á÷»ç°¢Çü °¡·Î ±æÀÌ 
+	//x: ì§€ê¸ˆ ê°€ë¡œ ìœ„ì¹˜, h=ë†’ì´, ã…£=ì§ì‚¬ê°í˜• ê°€ë¡œ ê¸¸ì´ 
 
 	cin >> n;
 	for (i = 1; i <= n; i++) 
 		cin >> histo[i];
 	
 	for (i = 1; i <= n; i++) {
-		if (!Pred(i)) {//¸¸¾à pred Á¶°Ç¿¡ ¸ÂÁö ¾Ê´Ù¸é ¸ÂÀ» ¶§ ±îÁö ¹İº¹
+		if (!Pred(i)) {//ë§Œì•½ pred ì¡°ê±´ì— ë§ì§€ ì•Šë‹¤ë©´ ë§ì„ ë•Œ ê¹Œì§€ ë°˜ë³µ
 			x = s.top().first;
 			while (!Pred(i)) {
 				h = s.top().second;
@@ -39,14 +39,14 @@ int main() {
 				result = max(result, (x - l)*h);
 			}
 		}
-		//À§ Á¶°Ç »ó°ü¾øÀÌ pushÇÏ´Â °ÍÀº ±âº»
+		//ìœ„ ì¡°ê±´ ìƒê´€ì—†ì´ pushí•˜ëŠ” ê²ƒì€ ê¸°ë³¸
 		pair<int, int> tmp;
 		tmp.first = i;
 		tmp.second = histo[i];
 		s.push(tmp);
 	}
 
-	while (!s.empty()) {//³¡±îÁö È®ÀÎÇßÀ» ½Ã ½ºÅÃÀÌ ºô ¶§±îÁö µ¹¸°´Ù.
+	while (!s.empty()) {//ëê¹Œì§€ í™•ì¸í–ˆì„ ì‹œ ìŠ¤íƒì´ ë¹Œ ë•Œê¹Œì§€ ëŒë¦°ë‹¤.
 		x = s.top().first;
 		while (!Pred(i)) {
 			h = s.top().second;
