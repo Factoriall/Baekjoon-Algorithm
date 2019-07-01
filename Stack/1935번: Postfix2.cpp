@@ -8,7 +8,7 @@ string postfix;
 
 int main() {
 	int n;
-	double alp[27];//¾ËÆÄºª °ª ÀÔ·Â
+	double alp[27];//ì•ŒíŒŒë²³ ê°’ ìž…ë ¥
 	int i;
 	double a, b;
 	double result;
@@ -16,15 +16,15 @@ int main() {
 
 	cin >> n;
 	cin >> postfix;
-	for (i = 0; i < n; i++)//alp[0]-AÀÇ °ª, alp[1]-BÀÇ °ª, ... 
+	for (i = 0; i < n; i++)//alp[0]-Aì˜ ê°’, alp[1]-Bì˜ ê°’, ... 
 		cin >> alp[i];
 
 	for (i = 0; i < postfix.size(); i++) {
 		
-		if (postfix[i] >= 'A' && postfix[i] <= 'Z') {//ÇÇ¿¬»êÀÚÀÏ½Ã push
+		if (postfix[i] >= 'A' && postfix[i] <= 'Z') {//í”¼ì—°ì‚°ìžì¼ì‹œ push
 			s.push(alp[postfix[i]-'A']);
 		}
-		else {//»çÄ¢¿¬»ê½Ã 2°³ pop ÈÄ ±×°ÍÀ» °è»êÇÑ µÚ ´Ù½Ã push
+		else {//ì‚¬ì¹™ì—°ì‚°ì‹œ 2ê°œ pop í›„ ê·¸ê²ƒì„ ê³„ì‚°í•œ ë’¤ ë‹¤ì‹œ push
 			b = s.top();
 			s.pop();
 			a = s.top();
@@ -47,7 +47,7 @@ int main() {
 			s.push(result);
 		}
 	}
-	//¸¶Áö¸· °ª ¼Ò¼öÁ¡ 2ÀÚ¸® ¼ö·Î Ãâ·Â
+	//ë§ˆì§€ë§‰ ê°’ ì†Œìˆ˜ì  2ìžë¦¬ ìˆ˜ë¡œ ì¶œë ¥
 	cout << fixed;
 	cout.precision(2);
 	cout << s.top() << endl;
