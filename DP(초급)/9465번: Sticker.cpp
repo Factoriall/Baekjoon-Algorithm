@@ -3,7 +3,7 @@
 using namespace std;
 const int MAX = 100001;
 
-int N;//ÇàÀÇ °³¼ö
+int N;//í–‰ì˜ ê°œìˆ˜
 int dp[MAX][3];
 int arr[2][MAX];
 
@@ -14,19 +14,19 @@ int sticker(int c, int s) {
 	if (dp[c][s] != -1)
 		return dp[c][s];
 
-	int result = sticker(c + 1, 0);//ÇÏ³ªµµ ¾È ¶¼°í °¡´Â °æ¿ì¸¦ result·Î Á¤ÀÇ
+	int result = sticker(c + 1, 0);//í•˜ë‚˜ë„ ì•ˆ ë–¼ê³  ê°€ëŠ” ê²½ìš°ë¥¼ resultë¡œ ì •ì˜
 
-	if (s != 1)//¸¸¾à À§ °ÍÀÌ Âõ¾îÁöÁö ¾Ê¾Ò´Ù¸é ±× ¿·¿¡ ÀÖ´Â °Íµµ Á¸Àç
-		result = max(result, arr[1][c]+sticker(c + 1, 1));//¿ø·¡ result¶û Àü ¿­ ¾Æ·¡°Í ÂõÀº °æ¿ì¶û ºñ±³
-	if (s != 2)//¸¸¾à ¾Æ·¡ °ÍÀÌ Âõ¾îÁöÁö ¾Ê¾Ò´Ù¸é ±× ¿·¿¡ ÀÖ´Â °Íµµ Á¸Àç
-		result = max(result, arr[0][c]+sticker(c + 1, 2));//¿ø·¡ result¶û Àü ¿­ À§°Í ÂõÀº °æ¿ì¶û ºñ±³
+	if (s != 1)//ë§Œì•½ ìœ„ ê²ƒì´ ì°¢ì–´ì§€ì§€ ì•Šì•˜ë‹¤ë©´ ê·¸ ì˜†ì— ìˆëŠ” ê²ƒë„ ì¡´ì¬
+		result = max(result, arr[1][c]+sticker(c + 1, 1));//ì›ë˜ resultë‘ ì „ ì—´ ì•„ë˜ê²ƒ ì°¢ì€ ê²½ìš°ë‘ ë¹„êµ
+	if (s != 2)//ë§Œì•½ ì•„ë˜ ê²ƒì´ ì°¢ì–´ì§€ì§€ ì•Šì•˜ë‹¤ë©´ ê·¸ ì˜†ì— ìˆëŠ” ê²ƒë„ ì¡´ì¬
+		result = max(result, arr[0][c]+sticker(c + 1, 2));//ì›ë˜ resultë‘ ì „ ì—´ ìœ„ê²ƒ ì°¢ì€ ê²½ìš°ë‘ ë¹„êµ
 
 	dp[c][s] = result;
 	return result;
 }
 
 int main() {
-	int num;//¹İº¹ È½¼ö
+	int num;//ë°˜ë³µ íšŸìˆ˜
 	int t, i, j;
 
 	cin >> num;
