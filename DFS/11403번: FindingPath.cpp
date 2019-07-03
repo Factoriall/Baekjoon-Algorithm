@@ -10,7 +10,7 @@ int CanGo[100][100];
 void dfs(int t) {
 	int i;
 	for (i = 0; i < n; i++) {
-		if (graph[t][i] == 1 && !visited[i]) {//ÀÌµ¿ °¡´ÉÇÏ°í(¹è¿­ Ã¼Å©) ¹æ¹® ¾ÈÇßÀ¸¸é(»çÀÌÅ¬ Ã¼Å©) ¹æ¹® Ã³¸® ÈÄ dfs
+		if (graph[t][i] == 1 && !visited[i]) {//ì´ë™ ê°€ëŠ¥í•˜ê³ (ë°°ì—´ ì²´í¬) ë°©ë¬¸ ì•ˆí–ˆìœ¼ë©´(ì‚¬ì´í´ ì²´í¬) ë°©ë¬¸ ì²˜ë¦¬ í›„ dfs
 			visited[i] = true;
 			dfs(i);
 		}
@@ -28,15 +28,15 @@ int main() {
 	}
 
 	for (i = 0; i < n; i++) {
-		fill(visited, visited + 100, false);//visited ÃÊ±âÈ­
+		fill(visited, visited + 100, false);//visited ì´ˆê¸°í™”
 		dfs(i);
 		for (j = 0; j < n; j++) {
-			if (visited[j] == true)//¹æ¹®ÇÑ °Íµé ¸ðµÎ ³Ö±â
+			if (visited[j] == true)//ë°©ë¬¸í•œ ê²ƒë“¤ ëª¨ë‘ ë„£ê¸°
 				CanGo[i][j] = 1;
 		}
 	}
 
-	for (i = 0; i < n; i++) {//°á°ú
+	for (i = 0; i < n; i++) {//ê²°ê³¼
 		for (j = 0; j < n; j++)
 			cout << CanGo[i][j] << ' ';
 		cout << '\n';
