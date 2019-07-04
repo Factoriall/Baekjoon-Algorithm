@@ -5,7 +5,7 @@ using namespace std;
 int map[102][102];
 
 int n, m;
-pair<int, int> dir[4] = { {0,1}, {-1, 0}, {1, 0}, {0, -1} };//πÊ«‚ µøº≠≥≤∫œ
+pair<int, int> dir[4] = { {0,1}, {-1, 0}, {1, 0}, {0, -1} };//Î∞©Ìñ• ÎèôÏÑúÎÇ®Î∂Å
 queue<pair<int, int>> q;
 
 void bfs() {
@@ -24,14 +24,14 @@ void bfs() {
 			//cout << "pop: [" << point.first << ", " << point.second << ']' << endl;
 			q.pop();
 
-			for (i = 0; i < 4; i++) {//4πÊ«‚ ≈Ωªˆ
+			for (i = 0; i < 4; i++) {//4Î∞©Ìñ• ÌÉêÏÉâ
 				int y = point.first + dir[i].first;
 				int x = point.second + dir[i].second;
-				if (y == n && x == m) {//∏Ò¿˚¡ˆ µµ¥ﬁ
+				if (y == n && x == m) {//Î™©Ï†ÅÏßÄ ÎèÑÎã¨
 					cout << cnt + 1 << '\n';
 					return;
 				}
-				if (map[y][x] == 1) {//πÊπÆ æ»«— ∞˜¿ª ≈Ωªˆ Ω√
+				if (map[y][x] == 1) {//Î∞©Î¨∏ ÏïàÌïú Í≥≥ÏùÑ ÌÉêÏÉâ Ïãú
 					pair<int, int> tmp;
 					tmp.first = y;
 					tmp.second = x;
@@ -52,7 +52,7 @@ int main() {
 	cin >> n >> m;
 	for (i = 1; i <= n; i++) {
 		for (j = 1; j <= m; j++) {
-			scanf("%1d", &map[i][j]);//¡ﬂø‰! «— º˝¿⁄æø πﬁ∞Ì ΩÕ¿ª ∂ß ªÁøÎ«—¥Ÿ.
+			scanf("%1d", &map[i][j]);//Ï§ëÏöî! Ìïú Ïà´ÏûêÏî© Î∞õÍ≥† Ïã∂ÏùÑ Îïå ÏÇ¨Ïö©ÌïúÎã§.
 		}
 	}
 	bfs();
