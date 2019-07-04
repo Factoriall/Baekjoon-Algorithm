@@ -3,12 +3,12 @@
 using namespace std;
 
 pair<int, int> mv[8] = { {-2,1},{-1,2},{1,2},{2,1},{2,-1},{1,-2},{-1,-2}, {-2, -1} };
-//³ªÀÌÆ® ¹æÇâ ¼³Á¤
+//ë‚˜ì´íŠ¸ ë°©í–¥ ì„¤ì •
 
 int len;
 int map[300][300];
-pair<int, int> knight;//³ªÀÌÆ® Ã³À½ À§Ä¡
-pair<int, int> dest;//¸ñÀûÁö
+pair<int, int> knight;//ë‚˜ì´íŠ¸ ì²˜ìŒ ìœ„ì¹˜
+pair<int, int> dest;//ëª©ì ì§€
 queue<pair<int, int>> q;
 
 void print() {
@@ -41,16 +41,16 @@ void bfs() {
 				int x = point.second + mv[i].second;
 
 				if (y >= 0 && x >= 0 && y < len && x < len) {
-					if (map[y][x] == 2) {//¸ñÀûÁö µµ´Ş½Ã ³¡!
+					if (map[y][x] == 2) {//ëª©ì ì§€ ë„ë‹¬ì‹œ ë!
 						cout << cnt << '\n';
 						return;
 					}
-					if (map[y][x] == 0) {//¹æ¹® ¾ÈÇÑ °÷ °¥ ½Ã
+					if (map[y][x] == 0) {//ë°©ë¬¸ ì•ˆí•œ ê³³ ê°ˆ ì‹œ
 						pair<int, int> next;
 						next.first = y;
 						next.second = x;
 						q.push(next);
-						map[y][x] = 1;//¹æ¹® Ã¼Å©
+						map[y][x] = 1;//ë°©ë¬¸ ì²´í¬
 					}
 				}
 			}
@@ -68,7 +68,7 @@ int main() {
 	for (t = 0; t < T; t++) {
 		cin >> len;
 		
-		//ÃÊ±âÈ­
+		//ì´ˆê¸°í™”
 		for (i = 0; i < len; i++) {
 			for (j = 0; j < len; j++) {
 				map[i][j] = 0;
@@ -79,14 +79,14 @@ int main() {
 		map[knight.first][knight.second] = 1;
 		cin >> dest.first >> dest.second;
 
-		if (dest.first == knight.first && dest.second == knight.second)//¸¸¾à À§Ä¡ °°À¸¸é ¿òÁ÷ÀÏ ÇÊ¿ä ¾øÀ½
+		if (dest.first == knight.first && dest.second == knight.second)//ë§Œì•½ ìœ„ì¹˜ ê°™ìœ¼ë©´ ì›€ì§ì¼ í•„ìš” ì—†ìŒ
 			cout << 0 << '\n';
 		else {
 			map[dest.first][dest.second] = 2;
 			bfs();
 		}
 
-		while (!q.empty())//Áß¿ä! ÀÌ °æ¿ì return ÀÌÈÄ Å¥¿¡ ³»¿ë¹°ÀÌ ³²¾ÆÀÖÀ» ¼ö ÀÖÀ¸¹Ç·Î ¸ğµÎ ¾ø¾Ö¾ßÇÑ´Ù.
+		while (!q.empty())//ì¤‘ìš”! ì´ ê²½ìš° return ì´í›„ íì— ë‚´ìš©ë¬¼ì´ ë‚¨ì•„ìˆì„ ìˆ˜ ìˆìœ¼ë¯€ë¡œ ëª¨ë‘ ì—†ì• ì•¼í•œë‹¤.
 			q.pop();
 	}
 
