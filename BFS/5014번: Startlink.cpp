@@ -5,7 +5,7 @@ using namespace std;
 bool visited[1000001];
 queue<int> q;
 
-void bfs(int f, int s, int g, int u, int d) {//bfs »ç¿ë
+void bfs(int f, int s, int g, int u, int d) {//bfs ì‚¬ìš©
 	int i;
 	int cnt = 1;
 	int tmp;
@@ -27,7 +27,7 @@ void bfs(int f, int s, int g, int u, int d) {//bfs »ç¿ë
 				//cout << "push: " << tmp << endl;
 				q.push(tmp);
 				visited[tmp] = true;
-				//Áß¿ä! ÀÌ ºÎºÐ¿¡¼­ true·Î ¹Ù²ãÁà¾ß Áßº¹À¸·Î ¹æ¹®ÇÏ´Â °÷À» ¾ø¾Ù ¼ö ÀÖ´Ù!
+				//ì¤‘ìš”! ì´ ë¶€ë¶„ì—ì„œ trueë¡œ ë°”ê¿”ì¤˜ì•¼ ì¤‘ë³µìœ¼ë¡œ ë°©ë¬¸í•˜ëŠ” ê³³ì„ ì—†ì•¨ ìˆ˜ ìžˆë‹¤!
 			}
 			
 			tmp = now - d;
@@ -39,13 +39,13 @@ void bfs(int f, int s, int g, int u, int d) {//bfs »ç¿ë
 				//cout << "push: " << tmp << endl;
 				q.push(tmp);
 				visited[tmp] = true;
-				//À§¿Í µ¿ÀÏÇÏ°Ô Áß¿ä!
+				//ìœ„ì™€ ë™ì¼í•˜ê²Œ ì¤‘ìš”!
 			}
 		}
 		cnt++;
 	}
 
-	//¸¶Áö¸·±îÁö Å»Ãâ ¸øÇÒ ½Ã ¸ø °¬´Ù´Â ÀÇ¹Ì
+	//ë§ˆì§€ë§‰ê¹Œì§€ íƒˆì¶œ ëª»í•  ì‹œ ëª» ê°”ë‹¤ëŠ” ì˜ë¯¸
 	cout << "use the stairs" << '\n';
 }
 
