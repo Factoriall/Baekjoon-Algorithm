@@ -2,7 +2,7 @@
 #include <queue>
 using namespace std;
 
-pair<int, int> dir[4] = { {-1,0}, {0,1},{1,0},{0,-1} };//½Ã°è¹æÇâ
+pair<int, int> dir[4] = { {-1,0}, {0,1},{1,0},{0,-1} };//ì‹œê³„ë°©í–¥
 
 pair<int, int> red;
 pair<int, int> blue;
@@ -37,7 +37,7 @@ bool moveMap(int i, pair<int, int> r, pair<int, int> b, bool isRedFirst) {
 	int By = b.first; int Bx = b.second;
 	int yDir = dir[i].first; int xDir = dir[i].second;
 
-	if (isRedFirst) {//»¡°£»ö ¸ÕÀú
+	if (isRedFirst) {//ë¹¨ê°„ìƒ‰ ë¨¼ì €
 		while (map[Ry + yDir][Rx + xDir] == '.') {
 			Ry += yDir; Rx += xDir;
 		}
@@ -74,7 +74,7 @@ bool moveMap(int i, pair<int, int> r, pair<int, int> b, bool isRedFirst) {
 		}
 	}
 
-	else {//ÆÄ¶õ»ö ¸ÕÀú
+	else {//íŒŒëž€ìƒ‰ ë¨¼ì €
 		while (map[By + yDir][Bx + xDir] == '.') {
 			By += yDir; Bx += xDir;
 		}
@@ -116,7 +116,7 @@ void bfs() {
 	bQueue.push(blue);
 
 	while (cnt <= 10) {
-		int qSize = rQueue.size();//¾îÂ÷ÇÇ »¡°£»öÀÌ¶û ÆÄ¶û»ö Å¥ Å©±â´Â °°À¸¹Ç·Î ÀÌ°É·Î ½áµµ µÈ´Ù.
+		int qSize = rQueue.size();//ì–´ì°¨í”¼ ë¹¨ê°„ìƒ‰ì´ëž‘ íŒŒëž‘ìƒ‰ í í¬ê¸°ëŠ” ê°™ìœ¼ë¯€ë¡œ ì´ê±¸ë¡œ ì¨ë„ ëœë‹¤.
 
 		for (t = 0; t < qSize; t++) {
 			red = rQueue.front();
@@ -124,38 +124,38 @@ void bfs() {
 			rQueue.pop();
 			bQueue.pop();
 
-			//¿òÁ÷ÀÌ´Â ¹æÇâÀÇ º® ÂÊ¿¡ ´õ °¡±î¿î ±¸½½À» ¸ÕÀú ¿òÁ÷ÀÎ´Ù.
+			//ì›€ì§ì´ëŠ” ë°©í–¥ì˜ ë²½ ìª½ì— ë” ê°€ê¹Œìš´ êµ¬ìŠ¬ì„ ë¨¼ì € ì›€ì§ì¸ë‹¤.
 			for (i = 0; i < 4; i++) {
 				bool result;
-				if (i == 0) {//ºÏ
+				if (i == 0) {//ë¶
 					if (red.first < blue.first)
 						result = moveMap(i, red, blue, true);
 					else
 						result = moveMap(i, red, blue, false);
 				}
 				
-				if (i == 1) {//µ¿
+				if (i == 1) {//ë™
 					if (red.second > blue.second)
 						result = moveMap(i, red, blue, true);
 					else
 						result = moveMap(i, red, blue, false);
 				}
 				
-				if (i == 2) {//³²
+				if (i == 2) {//ë‚¨
 					if (red.first > blue.first)
 						result = moveMap(i, red, blue, true);
 					else
 						result = moveMap(i, red, blue, false);
 				}
 				
-				if (i == 3) {//¼­
+				if (i == 3) {//ì„œ
 					if (red.second < blue.second)
 						result = moveMap(i, red, blue, true);
 					else
 						result = moveMap(i, red, blue, false);
 				}
 				
-				if (result) {//Å»Ãâ Á¶°Ç
+				if (result) {//íƒˆì¶œ ì¡°ê±´
 					cout << cnt << '\n';
 					return;
 				}
