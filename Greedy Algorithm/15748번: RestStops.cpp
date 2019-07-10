@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-pair<long long int, long long int> stop[100001];//first - À§Ä¡, second - ¸ÀÀÖ´Â Á¤µµ
+pair<long long int, long long int> stop[100001];//first - Ã€Â§Ã„Â¡, second - Â¸Ã€Ã€Ã–Â´Ã‚ ÃÂ¤ÂµÂµ
 
 bool Pred(pair<long long int, long long int> i, pair<long long int, long long int> j) {
 	if (i.second != j.second)
