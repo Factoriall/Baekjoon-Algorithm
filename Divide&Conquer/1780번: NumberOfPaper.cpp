@@ -40,15 +40,15 @@ int dac(int sy, int sx, int n) {
 		for (i = 0; i < 3; i++) {
 			for (j = 0; j < 3; j++) {
 				if (tmp[i][j] == 1) {
-					//cout << "1 - yÁÂÇ¥: " << sy + (i*d) << ", xÁÂÇ¥: " << sx + (j*d) << ", Å©±â: " << d << endl;
+					//cout << "1 - yì¢Œí‘œ: " << sy + (i*d) << ", xì¢Œí‘œ: " << sx + (j*d) << ", í¬ê¸°: " << d << endl;
 					o++;
 				}
 				else if (tmp[i][j] == 0) {
-					//cout << "0 - yÁÂÇ¥: " << sy + (i*d) << ", xÁÂÇ¥: " << sx + (j*d) << ", Å©±â: " << d << endl;
+					//cout << "0 - yì¢Œí‘œ: " << sy + (i*d) << ", xì¢Œí‘œ: " << sx + (j*d) << ", í¬ê¸°: " << d << endl;
 					z++;
 				}
 				else if (tmp[i][j] == -1) {
-					//cout << "-1 - yÁÂÇ¥: " << sy + (i*d) << ", xÁÂÇ¥: " << sx + (j*d) << ", Å©±â: " << d << endl;
+					//cout << "-1 - yì¢Œí‘œ: " << sy + (i*d) << ", xì¢Œí‘œ: " << sx + (j*d) << ", í¬ê¸°: " << d << endl;
 					mo++;
 				}
 			}
