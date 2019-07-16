@@ -37,7 +37,7 @@ void bfs() {
 			vector<int> v = q.front().prev;
 			q.pop();
 
-			if (v[v.size() - 1] == n * n - n / 2) {//Á¾·á Á¶°Ç
+			if (v[v.size() - 1] == n * n - n / 2) {//ì¢…ë£Œ ì¡°ê±´
 				cout << v.size() << endl;
 				for (int i = 0; i < v.size(); i++) {
 					cout << v[i] << ' ';
@@ -50,8 +50,8 @@ void bfs() {
 
 			//cout << '(' << p1y << ',' << p1x << ')' << endl;
 			
-			//¿ŞÂÊ Å¸ÀÏ ´ë»ó
-			if (p1x - 1 >= 0 && map[p1y][p1x - 1] != 0 && map[p1y][p1x - 1] == map[p1y][p1x]) {//¿ŞÂÊ ÀÌµ¿
+			//ì™¼ìª½ íƒ€ì¼ ëŒ€ìƒ
+			if (p1x - 1 >= 0 && map[p1y][p1x - 1] != 0 && map[p1y][p1x - 1] == map[p1y][p1x]) {//ì™¼ìª½ ì´ë™
 				tmp.prev = v;
 
 				tmp.p2y = p1y; tmp.p2x = p1x - 1;
@@ -70,7 +70,7 @@ void bfs() {
 				}
 				cout << endl;*/
 			}
-			if (p1y - 1 >= 0 && map[p1y - 1][p1x] != 0 && map[p1y - 1][p1x] == map[p1y][p1x]) {//À§ ÀÌµ¿
+			if (p1y - 1 >= 0 && map[p1y - 1][p1x] != 0 && map[p1y - 1][p1x] == map[p1y][p1x]) {//ìœ„ ì´ë™
 				tmp.prev = v;
 
 				tmp.p2y = p1y - 1; tmp.p2x = p1x;
@@ -89,7 +89,7 @@ void bfs() {
 				}
 				cout << endl;*/
 			}
-			if (p1y + 1 < n && map[p1y + 1][p1x] != 0 && map[p1y + 1][p1x] == map[p1y][p1x]) {//¾Æ·¡ ÀÌµ¿
+			if (p1y + 1 < n && map[p1y + 1][p1x] != 0 && map[p1y + 1][p1x] == map[p1y][p1x]) {//ì•„ë˜ ì´ë™
 				tmp.prev = v;
 
 				tmp.p2y = p1y + 1; tmp.p2x = p1x;
@@ -109,8 +109,8 @@ void bfs() {
 				cout << endl;*/
 			}
 
-			//¿À¸¥ÂÊ Å¸ÀÏ ´ë»ó
-			if (p2x + 1 < 2 * n && map[p2y][p2x + 1] != 0 && map[p2y][p2x + 1] == map[p2y][p2x]) {//¿À¸¥ÂÊ ÀÌµ¿
+			//ì˜¤ë¥¸ìª½ íƒ€ì¼ ëŒ€ìƒ
+			if (p2x + 1 < 2 * n && map[p2y][p2x + 1] != 0 && map[p2y][p2x + 1] == map[p2y][p2x]) {//ì˜¤ë¥¸ìª½ ì´ë™
 				tmp.prev = v;
 
 				tmp.p1y = p2y; tmp.p1x = p2x + 1;
@@ -129,7 +129,7 @@ void bfs() {
 				}
 				cout << endl;*/
 			}
-			if (p2y - 1 < n && map[p2y - 1][p2x] != 0 && map[p2y - 1][p2x] == map[p2y][p2x]) {//À§ ÀÌµ¿
+			if (p2y - 1 < n && map[p2y - 1][p2x] != 0 && map[p2y - 1][p2x] == map[p2y][p2x]) {//ìœ„ ì´ë™
 				tmp.prev = v;
 
 				tmp.p1y = p2y - 1; tmp.p1x = p2x;
@@ -148,7 +148,7 @@ void bfs() {
 				}
 				cout << endl;*/
 			}
-			if (p2y + 1 < n && map[p2y + 1][p2x] != 0 && map[p2y + 1][p2x] == map[p2y][p2x]) {//¾Æ·¡ ÀÌµ¿
+			if (p2y + 1 < n && map[p2y + 1][p2x] != 0 && map[p2y + 1][p2x] == map[p2y][p2x]) {//ì•„ë˜ ì´ë™
 				tmp.prev = v;
 
 				tmp.p1y = p2y + 1; tmp.p1x = p2x;
