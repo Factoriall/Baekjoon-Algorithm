@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
 
-int type[123457];//Å¸ÀÔ
-int attack[123457];//°ø°İ·Â
-int hp[123457];//Ã¼·Â
-long long hpChange[123457];//¸Ş¸ğÀÌÁ¦ÀÌ¼Ç
+int type[123457];//íƒ€ì…
+int attack[123457];//ê³µê²©ë ¥
+int hp[123457];//ì²´ë ¥
+long long hpChange[123457];//ë©”ëª¨ì´ì œì´ì…˜
 
 int main() {
 	int i;
-	int atk;//ÃÊ±â °ø°İ·Â
-	int num;//¹æ ¼ö
+	int atk;//ì´ˆê¸° ê³µê²©ë ¥
+	int num;//ë°© ìˆ˜
 
 	cin >> num >> atk;
 
@@ -20,17 +20,17 @@ int main() {
 		hpChange[i] = -1;
 	
 	
-	long long hi = 9223372036854775800;//64 signed Áø¼ö Áß °¡Àå Å« ¼ö
+	long long hi = 9223372036854775800;//64 signed ì§„ìˆ˜ ì¤‘ ê°€ì¥ í° ìˆ˜
 	long long lo = 0;
 
-	while (lo + 1 < hi) {//2Áø Å½»ö ½Ç½Ã
+	while (lo + 1 < hi) {//2ì§„ íƒìƒ‰ ì‹¤ì‹œ
 		long long mid = (hi + lo) / 2;
 		long long a = atk;
 		long long h = mid;
 		bool isDead = false;
 
 		for (i = 0; i < num; i++) {
-			if (type[i] == 1) {//µå·¡°ï ¹æ
+			if (type[i] == 1) {//ë“œë˜ê³¤ ë°©
 				long long da = attack[i];
 				long long dh = hp[i];
 
@@ -50,7 +50,7 @@ int main() {
 					break;
 				}
 			}
-			else {//¹°¾à ¹æ
+			else {//ë¬¼ì•½ ë°©
 				a += attack[i];
 				h = (h + hp[i] < mid ? (h + hp[i]) : mid);
 			}
