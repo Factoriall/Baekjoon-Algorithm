@@ -2,18 +2,18 @@
 #include <cstdio>
 using namespace std;
 
-long long dp[32][32];//dp ¾È¿¡´Â n,m °³¼ö Á¶°ÇÀ» ¸¸Á·ÇÏ´Â ºñÆ®ÀÇ Á¾·ù ¼ö¸¦ ÀúÀå
+long long dp[32][32];//dp ì•ˆì—ëŠ” n,m ê°œìˆ˜ ì¡°ê±´ì„ ë§Œì¡±í•˜ëŠ” ë¹„íŠ¸ì˜ ì¢…ë¥˜ ìˆ˜ë¥¼ ì €ìž¥
 
-long long binary(int n, int m) {//n: ¾ÕÀ¸·Î Ã¤¿ö¾ß ÇÒ ³²Àº ºñÆ®¼ö, m: Ã¤¿ö¾ßÇÒ ³²Àº 1ÀÇ °³¼ö
+long long binary(int n, int m) {//n: ì•žìœ¼ë¡œ ì±„ì›Œì•¼ í•  ë‚¨ì€ ë¹„íŠ¸ìˆ˜, m: ì±„ì›Œì•¼í•  ë‚¨ì€ 1ì˜ ê°œìˆ˜
 	long long& ret = dp[n][m];
 	if (ret != -1)
 		return ret;
 	if (n == 0 || m == 0)
 		return ret = 1;
 
-	ret = binary(n - 1, m);//Áö±Ý ¼ö¸¦ 0À¸·Î Ã¤¿üÀ» ¶§
+	ret = binary(n - 1, m);//ì§€ê¸ˆ ìˆ˜ë¥¼ 0ìœ¼ë¡œ ì±„ì› ì„ ë•Œ
 	if (m > 0)
-		ret += binary(n - 1, m - 1);//Áö±Ý ¼ö¸¦ 1·Î Ã¤¿üÀ» ¶§
+		ret += binary(n - 1, m - 1);//ì§€ê¸ˆ ìˆ˜ë¥¼ 1ë¡œ ì±„ì› ì„ ë•Œ
 	
 	return ret;
 }
@@ -29,12 +29,12 @@ void printAns(int n, int m, long long r) {
 	if (n == 0)
 		return;
 
-	if (r > dp[n - 1][m]) {//1·Î Ã¤¿öÁö´Â °æ¿ì
+	if (r > dp[n - 1][m]) {//1ë¡œ ì±„ì›Œì§€ëŠ” ê²½ìš°
 		printf("1");
 		//printf("%d %d %d\n", n - 1, m - 1, r - dp[n - 1][m]);
 		printAns(n - 1, m - 1, r - dp[n - 1][m]);
 	}
-	else {//0À¸·Î Ã¤¿öÁö´Â °æ¿ì
+	else {//0ìœ¼ë¡œ ì±„ì›Œì§€ëŠ” ê²½ìš°
 		printf("0");
 		//printf("%d %d %d\n", n - 1, m, r);
 		printAns(n - 1, m, r);
