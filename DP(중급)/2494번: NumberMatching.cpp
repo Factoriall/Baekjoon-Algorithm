@@ -13,20 +13,20 @@ int dfs(int n, int left) {
 	if (dp[n][left] != -1)
 		return ret;
 
-	int rotate;//È¸Àü ¼ö ±â·Ï
-	int now = (init[n] + left) % 10;//n À§Ä¡¿¡¼­ ÇöÀç À§Ä¡(left Àû¿ë)
+	int rotate;//íšŒì „ ìˆ˜ ê¸°ë¡
+	int now = (init[n] + left) % 10;//n ìœ„ì¹˜ì—ì„œ í˜„ì¬ ìœ„ì¹˜(left ì ìš©)
 	int nowLeft;
 
 	if (n == N)
 		return ret = 0;
 
-	//¿À¸¥ÂÊÀ¸·Î µ¹·ÈÀ» ¶§, left ¼ö À¯Áö, ¼ö°¡ ÁÙ¾îµç´Ù
+	//ì˜¤ë¥¸ìª½ìœ¼ë¡œ ëŒë ¸ì„ ë•Œ, left ìˆ˜ ìœ ì§€, ìˆ˜ê°€ ì¤„ì–´ë“ ë‹¤
 	rotate = now >= fin[n] ? now - fin[n] : 10 + now - fin[n];
 	nowLeft = left;
 
 	ret = rotate + dfs(n + 1, nowLeft);
 
-	//¿ŞÂÊÀ¸·Î µ¹·ÈÀ» ¶§, ¼ö°¡ ´Ã¾î³­´Ù.
+	//ì™¼ìª½ìœ¼ë¡œ ëŒë ¸ì„ ë•Œ, ìˆ˜ê°€ ëŠ˜ì–´ë‚œë‹¤.
 	rotate = (now <= fin[n]) ? fin[n] - now : 10 + fin[n] - now;
 	nowLeft = (left + rotate) % 10;
 	
@@ -38,12 +38,12 @@ int dfs(int n, int left) {
 void trackAnswer(int n, int left) {
 	if (n == N)
 		return;
-	int now = (init[n] + left) % 10;//n À§Ä¡¿¡¼­ ÇöÀç À§Ä¡(left Àû¿ë)
+	int now = (init[n] + left) % 10;//n ìœ„ì¹˜ì—ì„œ í˜„ì¬ ìœ„ì¹˜(left ì ìš©)
 	int nowLeft;
 	int rotate;
 	bool flag = true;
 
-	//¿ŞÂÊ
+	//ì™¼ìª½
 	rotate = (now <= fin[n]) ? fin[n] - now : 10 + fin[n] - now;
 	nowLeft = (left + rotate) % 10;
 	if (dfs(n, left) == (rotate + dfs(n + 1, nowLeft))) {
@@ -53,7 +53,7 @@ void trackAnswer(int n, int left) {
 		flag = false;
 	}
 
-	//¿À¸¥ÂÊ
+	//ì˜¤ë¥¸ìª½
 	rotate = now >= fin[n] ? now - fin[n] : 10 + now - fin[n];
 	nowLeft = left;
 	if (dfs(n, left) == (rotate + dfs(n + 1, nowLeft)) && flag) {
