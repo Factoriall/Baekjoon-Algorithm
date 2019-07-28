@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <vector>
 #include <algorithm>
@@ -27,11 +26,11 @@ int findWeight(int n, bool pe) {
 
 	int notpick = 0;
 	int pick = -1;
-	//±âº»ÀûÀ¸·Î ÀÚ½ÅÀÌ ¼±ÅÃ ¾ÈµÉ °æ¿ì´Â ¾î¶² »óÈ²¿¡¼­µµ °¡´ÉÇÏ´Ù
+	//ê¸°ë³¸ì ìœ¼ë¡œ ìì‹ ì´ ì„ íƒ ì•ˆë  ê²½ìš°ëŠ” ì–´ë–¤ ìƒí™©ì—ì„œë„ ê°€ëŠ¥í•˜ë‹¤
 	for (int next : child[n]) {
 		notpick += findWeight(next, false);
 	}
-	if (!pe) {//ºÎ¸ğ°¡ ÁıÇÕ¿¡ Æ÷ÇÔµÇÁö ¾ÊÀ» ½Ã ÀÚ½Å Æ÷ÇÔ °¡´É
+	if (!pe) {//ë¶€ëª¨ê°€ ì§‘í•©ì— í¬í•¨ë˜ì§€ ì•Šì„ ì‹œ ìì‹  í¬í•¨ ê°€ëŠ¥
 		pick = weight[n];
 		for(int next : child[n])
 			pick += findWeight(next, true);
@@ -43,11 +42,11 @@ int findWeight(int n, bool pe) {
 void trackAnswer(int n, bool pe) {
 	int notpick = 0;
 	int pick = -1;
-	//±âº»ÀûÀ¸·Î ÀÚ½ÅÀÌ ¼±ÅÃ ¾ÈµÉ °æ¿ì´Â ¾î¶² »óÈ²¿¡¼­µµ °¡´ÉÇÏ´Ù
+	//ê¸°ë³¸ì ìœ¼ë¡œ ìì‹ ì´ ì„ íƒ ì•ˆë  ê²½ìš°ëŠ” ì–´ë–¤ ìƒí™©ì—ì„œë„ ê°€ëŠ¥í•˜ë‹¤
 	for (int next : child[n]) {
 		notpick += findWeight(next, false);
 	}
-	if (!pe) {//ºÎ¸ğ°¡ ÁıÇÕ¿¡ Æ÷ÇÔµÇÁö ¾ÊÀ» ½Ã ÀÚ½Å Æ÷ÇÔ °¡´É
+	if (!pe) {//ë¶€ëª¨ê°€ ì§‘í•©ì— í¬í•¨ë˜ì§€ ì•Šì„ ì‹œ ìì‹  í¬í•¨ ê°€ëŠ¥
 		pick = weight[n];
 		for (int next : child[n])
 			pick += findWeight(next, true);
@@ -82,12 +81,12 @@ int main() {
 
 	dfs(0);
 
-	for (i = 0; i < N; i++) {//ÃÊ±âÈ­
+	for (i = 0; i < N; i++) {//ì´ˆê¸°í™”
 		dp[i][0] = -1;
 		dp[i][1] = -1;
 	}
 
-	printf("%d\n", findWeight(0, false));//ºÎ¸ğ ³ëµå´Â ±âº»ÀûÀ¸·Î Æ÷ÇÔx
+	printf("%d\n", findWeight(0, false));//ë¶€ëª¨ ë…¸ë“œëŠ” ê¸°ë³¸ì ìœ¼ë¡œ í¬í•¨x
 
 	trackAnswer(0, false);
 	sort(ans.begin(), ans.end());
