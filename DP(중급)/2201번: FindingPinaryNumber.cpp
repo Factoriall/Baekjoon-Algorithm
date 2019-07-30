@@ -1,7 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 
-long long dp[100][2];
+long long dp[100][2];//행: 자릿수, 열: 앞의 자리가 1이냐 0이냐
 
 void trackAnswer(long long now, int p) {
 	if (p == 0) 
@@ -23,7 +22,7 @@ int main() {
 
 	scanf("%lld", &K);
 
-	dp[1][0] = 1; dp[1][1] = 1;
+	dp[1][0] = 1; dp[1][1] = 1;//dp[1][0]: 0, dp[1][1]: 1
 
 	int i = 1;
 	while (K >= dp[i][0] + dp[i][1]) {
