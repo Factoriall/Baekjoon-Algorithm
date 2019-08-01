@@ -5,7 +5,7 @@ using namespace std;
 
 long long dp[101][2];
 
-long long power(int n) {//ÀÚ¸´¼ö ¸¸Å­ 10À» °öÇÏ´Â ½Ä
+long long power(int n) {//ìë¦¿ìˆ˜ ë§Œí¼ 10ì„ ê³±í•˜ëŠ” ì‹
 	long long ret = 1;
 	for (int i = 0; i < n; i++) {
 		ret *= 10;
@@ -13,7 +13,7 @@ long long power(int n) {//ÀÚ¸´¼ö ¸¸Å­ 10À» °öÇÏ´Â ½Ä
 	return ret;
 }
 
-long long dfs(int n, bool isFirst) {//n: Áö±İ ¼ıÀÚ. isFirst: Áö±İ ¸Ç Ã¹¹øÂ° ÀÚ¸®°¡ Æ÷ÇÔµÇ¾îÀÖ´Â°¡ ¿©ºÎ
+long long dfs(int n, bool isFirst) {//n: ì§€ê¸ˆ ìˆ«ì. isFirst: ì§€ê¸ˆ ë§¨ ì²«ë²ˆì§¸ ìë¦¬ê°€ í¬í•¨ë˜ì–´ìˆëŠ”ê°€ ì—¬ë¶€
 	long long& ret = dp[n][isFirst];
 	if (ret != -1)
 		return ret;
@@ -27,16 +27,16 @@ long long dfs(int n, bool isFirst) {//n: Áö±İ ¼ıÀÚ. isFirst: Áö±İ ¸Ç Ã¹¹øÂ° ÀÚ¸®
 		return ret = 2;
 	if (n == 6) {
 		if (isFirst)
-			return ret = 6;//Ã¹ ºÎºĞÀÌ¸é 6 ¹İÈ¯
+			return ret = 6;//ì²« ë¶€ë¶„ì´ë©´ 6 ë°˜í™˜
 		else
-			return ret = 0;//¾Æ´Ï¸é 0 ¹İÈ¯
+			return ret = 0;//ì•„ë‹ˆë©´ 0 ë°˜í™˜
 	}
 	if (n == 7)
 		return ret = 8;
 
-	ret = 1000000000000000;//ÀÓÀÇÀÇ ¸Å¿ì Å« ¼ö ¼³Á¤
+	ret = 1000000000000000;//ì„ì˜ì˜ ë§¤ìš° í° ìˆ˜ ì„¤ì •
 	for (int i = 2; i <= 7; i++) {
-		if ((n - i - 1) / 7 < (n - 1) / 7) {//ÀÚ¸´¼ö°¡ Àû¾ÆÁ®¾ß Á¦´ë·Î ¼ö°¡ ÁÙ¾îµêÀ» ¾Ë ¼ö ÀÖ´Ù.
+		if ((n - i - 1) / 7 < (n - 1) / 7) {//ìë¦¿ìˆ˜ê°€ ì ì•„ì ¸ì•¼ ì œëŒ€ë¡œ ìˆ˜ê°€ ì¤„ì–´ë“¦ì„ ì•Œ ìˆ˜ ìˆë‹¤.
 			if (isFirst)
 				ret = min(ret, dfs(i, true) * power((n - 1) / 7) + dfs(n - i, false));
 			else
@@ -52,7 +52,7 @@ int main() {
 
 	scanf("%d", &T);
 
-	for (int i = 0; i <= 100; i++) {//dp ÃÊ±âÈ­
+	for (int i = 0; i <= 100; i++) {//dp ì´ˆê¸°í™”
 		dp[i][0] = -1;
 		dp[i][1] = -1;
 	}
@@ -62,11 +62,11 @@ int main() {
 
 		scanf("%d", &n);
 		
-		//ÀÛÀº ¼ıÀÚ Ãâ·Â
+		//ì‘ì€ ìˆ«ì ì¶œë ¥
 		printf("%lld ", dfs(n, true));
 		
 
-		//Å« ¼ıÀÚ Ãâ·Â
+		//í° ìˆ«ì ì¶œë ¥
 		if (n % 2 == 0) {
 			while (n > 0) {
 				printf("1");
