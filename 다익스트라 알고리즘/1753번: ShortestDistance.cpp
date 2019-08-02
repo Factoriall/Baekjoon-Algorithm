@@ -22,35 +22,35 @@ int main() {
 	for (int i = 0; i < E; i++) {
 		int u, v, w;
 		scanf("%d %d %d", &u, &v, &w);
-		adj[u - 1].push_back(P(v - 1, w));//adj ¹è¿­ÀÇ pairÇÔ¼ö´Â first: °£¼±¹øÈ£, second: °¡ÁßÄ¡
+		adj[u - 1].push_back(P(v - 1, w));//adj ë°°ì—´ì˜ pairí•¨ìˆ˜ëŠ” first: ê°„ì„ ë²ˆí˜¸, second: ê°€ì¤‘ì¹˜
 	}
 
 	
 	fill(dist, dist + V, INF);
 
-	// pairÇÔ¼öÀÇ °æ¿ì first ¸ÕÀú ºñ±³ÇÏ°í °°À» ½Ã second ºñ±³
-	//greater »ç¿ë ½Ã top¿¡ °¡Àå ÀÛÀº ¼ö°¡ ¿Ã¶ó¿Â´Ù, less´Â °¡Àå Å« ¼ö.
-	////PQ¿¡¼­ pair ÇÔ¼ö first: °¡ÁßÄ¡, second: ÀÌ¾îÁø °£¼± ¹øÈ£ -> adj¿Í ¹Ý´ë!
+	// pairí•¨ìˆ˜ì˜ ê²½ìš° first ë¨¼ì € ë¹„êµí•˜ê³  ê°™ì„ ì‹œ second ë¹„êµ
+	//greater ì‚¬ìš© ì‹œ topì— ê°€ìž¥ ìž‘ì€ ìˆ˜ê°€ ì˜¬ë¼ì˜¨ë‹¤, lessëŠ” ê°€ìž¥ í° ìˆ˜.
+	////PQì—ì„œ pair í•¨ìˆ˜ first: ê°€ì¤‘ì¹˜, second: ì´ì–´ì§„ ê°„ì„  ë²ˆí˜¸ -> adjì™€ ë°˜ëŒ€!
 	priority_queue<P, vector<P>, greater<P>> PQ; 
 
-	//´ÙÀÍ½ºÆ®¶ó ¾Ë°í¸®Áò
+	//ë‹¤ìµìŠ¤íŠ¸ë¼ ì•Œê³ ë¦¬ì¦˜
 	dist[S] = 0;
 	PQ.push(P(0, S));
 
 	while (!PQ.empty()) {
 		int curr;
 		do {
-			curr = PQ.top().second;//À§Ä¡
+			curr = PQ.top().second;//ìœ„ì¹˜
 			PQ.pop();
 		} while (!PQ.empty() && visited[curr]);
 
-		if (visited[curr])//ºñ¾ú°í ÇØ´ç³ëµå´Â ¹æ¹®ÇßÀ¸¹Ç·Î ´õÀÌ»ó °¥ °÷ ¾øÀ½
+		if (visited[curr])//ë¹„ì—ˆê³  í•´ë‹¹ë…¸ë“œëŠ” ë°©ë¬¸í–ˆìœ¼ë¯€ë¡œ ë”ì´ìƒ ê°ˆ ê³³ ì—†ìŒ
 			break;
 
 		visited[curr] = true;
 		for (P nextP : adj[curr]) {
-			int next = nextP.first;//´ÙÀ½ À§Ä¡
-			int nw = nextP.second;//°¡ÁßÄ¡
+			int next = nextP.first;//ë‹¤ìŒ ìœ„ì¹˜
+			int nw = nextP.second;//ê°€ì¤‘ì¹˜
 			
 			if (dist[next] > dist[curr] + nw) {
 				dist[next] = dist[curr] + nw;
