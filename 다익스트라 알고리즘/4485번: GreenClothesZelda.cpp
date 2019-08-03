@@ -15,7 +15,7 @@ typedef struct {
 }P;
 
 struct cmp {
-	bool operator()(P a, P b) {//weight µû¶ó priority_queue Á¶Àý
+	bool operator()(P a, P b) {//weight ë”°ë¼ priority_queue ì¡°ì ˆ
 		return a.w > b.w;
 	}
 };
@@ -39,7 +39,7 @@ int main() {
 			}
 		}
 
-		for (int i = 0; i < N; i++) {//ÃÊ±âÈ­
+		for (int i = 0; i < N; i++) {//ì´ˆê¸°í™”
 			for (int j = 0; j < N; j++) {
 				visited[i][j] = false;
 				dist[i][j] = INF;
@@ -62,7 +62,7 @@ int main() {
 
 			visited[curY][curX] = true;
 
-			if (curY == N - 1 && curX == N - 1) {//³¡Á¡ µµ´Þ
+			if (curY == N - 1 && curX == N - 1) {//ëì  ë„ë‹¬
 				/*for (int i = 0; i < N; i++) {
 					for (int j = 0; j < N; j++) {
 						if (dist[i][j] == INF)
@@ -77,10 +77,10 @@ int main() {
 				break;
 			}
 
-			for (int i = 0; i < 4; i++) {//4¹æÇâ ÀÌµ¿ ±â·Ï
+			for (int i = 0; i < 4; i++) {//4ë°©í–¥ ì´ë™ ê¸°ë¡
 				int nextY = curY + dy[i];
 				int nextX = curX + dx[i];
-				if (nextY >= 0 && nextY < N && nextX >= 0 && nextX < N) {//±âº» Á¶°Ç
+				if (nextY >= 0 && nextY < N && nextX >= 0 && nextX < N) {//ê¸°ë³¸ ì¡°ê±´
 					//printf("nextY: %d, nextX: %d\n", nextY, nextX);
 					if (dist[nextY][nextX] > dist[curY][curX] + map[nextY][nextX]) {
 						dist[nextY][nextX] = dist[curY][curX] + map[nextY][nextX];
