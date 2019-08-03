@@ -21,7 +21,7 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		int s, e, w;
 		scanf("%d %d %d", &s, &e, &w);
-		city[s - 1].push_back(P(w, e - 1));//first: °¡ÁßÄ¡, second: ¹øÈ£
+		city[s - 1].push_back(P(w, e - 1));//first: ê°€ì¤‘ì¹˜, second: ë²ˆí˜¸
 	}
 
 	int S, E;
@@ -33,14 +33,14 @@ int main() {
 	priority_queue<P, vector<P>, greater<P>> pq;
 
 	dist[S] = 0;
-	pq.push(P(0, S));//first: °¡ÁßÄ¡, second: ¹øÈ£
+	pq.push(P(0, S));//first: ê°€ì¤‘ì¹˜, second: ë²ˆí˜¸
 	
 	//fill(visited, visited + N, false);
 
 	while (!pq.empty()) {
 		int curr;
 		do {
-			curr = pq.top().second;//¹øÈ£
+			curr = pq.top().second;//ë²ˆí˜¸
 			pq.pop();
 		} while (!pq.empty() && visited[curr]);
 		if (visited[curr]) break;
