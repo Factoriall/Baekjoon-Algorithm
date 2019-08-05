@@ -7,22 +7,22 @@
 using namespace std;
 
 typedef struct {//
-	int n;//´ëÆ÷ ¼ıÀÚ
-	double w;//°¡ÁßÄ¡
+	int n;//ëŒ€í¬ ìˆ«ì
+	double w;//ê°€ì¤‘ì¹˜
 }P;
 
 typedef struct {
-	double x;//x À§Ä¡
-	double y;//y À§Ä¡
+	double x;//x ìœ„ì¹˜
+	double y;//y ìœ„ì¹˜
 }C;
 
 struct cmp {
-	bool operator()(P a, P b) {//weight µû¶ó priority_queue Á¶Àı
+	bool operator()(P a, P b) {//weight ë”°ë¼ priority_queue ì¡°ì ˆ
 		return a.w > b.w;
 	}
 };
 
-double pythagoras(double x1, double y1, double x2, double y2) {//µÎ Á¡ »çÀÌ °Å¸® ±¸ÇÏ±â
+double pythagoras(double x1, double y1, double x2, double y2) {//ë‘ ì  ì‚¬ì´ ê±°ë¦¬ êµ¬í•˜ê¸°
 	return sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
 }
 
@@ -44,7 +44,7 @@ int main() {
 	cin >> c;
 	priority_queue<P, vector<P>, cmp> PQ;
 
-	for (int i = 0; i < c; i++) {//°É¾î¼­ °¡´Â °Å¸® ÀúÀå
+	for (int i = 0; i < c; i++) {//ê±¸ì–´ì„œ ê°€ëŠ” ê±°ë¦¬ ì €ì¥
 		double cx, cy;
 
 		cin >> cx >> cy;
@@ -56,13 +56,13 @@ int main() {
 
 	cannon[c].x = ex;
 	cannon[c].y = ey;
-	dist[c] = pythagoras(sx, sy, ex, ey) / 5;//¸ñÀûÁö
+	dist[c] = pythagoras(sx, sy, ex, ey) / 5;//ëª©ì ì§€
 	PQ.push(P{ c, dist[c] });
 
 	while (!PQ.empty()) {
 		int curr;
 		do {
-			curr = PQ.top().n;//ÇöÀç À§Ä¡
+			curr = PQ.top().n;//í˜„ì¬ ìœ„ì¹˜
 			PQ.pop();
 		} while (!PQ.empty() && visited[curr]);
 		if (visited[curr]) break;
