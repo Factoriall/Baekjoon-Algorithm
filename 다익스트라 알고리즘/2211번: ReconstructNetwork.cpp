@@ -23,7 +23,7 @@ int main() {
 
 	cin >> N >> M;
 
-	for (int i = 0; i < M; i++) {//½Ö¹æÇâ ÀúÀå
+	for (int i = 0; i < M; i++) {//ìŒë°©í–¥ ì €ìž¥
 		int a, b, w;
 		cin >> a >> b >> w;
 
@@ -36,7 +36,7 @@ int main() {
 		dist[i].prev = -1;
 	}
 
-	priority_queue<P, vector<P>, greater<P>> PQ;//PQ first: °¡ÁßÄ¡, second: À§Ä¡ 
+	priority_queue<P, vector<P>, greater<P>> PQ;//PQ first: ê°€ì¤‘ì¹˜, second: ìœ„ì¹˜ 
 	dist[0].w = 0;
 	dist[0].prev = 0;
 	PQ.push(P(0, 0));
@@ -51,7 +51,7 @@ int main() {
 		
 		visited[curr] = true;
 
-		for (P nextP : adj[curr]) {//adj ¹è¿­ first: À§Ä¡, second: °£¼± ±æÀÌ
+		for (P nextP : adj[curr]) {//adj ë°°ì—´ first: ìœ„ì¹˜, second: ê°„ì„  ê¸¸ì´
 			int next = nextP.first;
 			int d = nextP.second;
 			if (dist[next].w > dist[curr].w + d) {
