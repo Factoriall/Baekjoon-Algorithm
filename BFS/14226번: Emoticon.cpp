@@ -44,15 +44,15 @@ int main() {
 					w = w - 1;
 
 				if (w >= 0 && w <= 1024 && !visited[w][c]) {
-					cout << "win: " << w << ", clip: " << c << '\n';
+					//cout << "win: " << w << ", clip: " << c << '\n';
 					Q.push(P(w, c));
 					visited[w][c] = true;
 				}
 			}
 		}
 		sec++;
-		cout << '[' << sec << ']' << endl;
-		cout << "=====================" << endl;
+		//cout << '[' << sec << ']' << endl;
+		//cout << "=====================" << endl;
 	}
 
 
