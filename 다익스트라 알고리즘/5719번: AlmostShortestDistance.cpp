@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-typedef pair<int, int> P;//first: °¡ÁßÄ¡, second: µµÂøÀ§Ä¡
+typedef pair<int, int> P;//first: ê°€ì¤‘ì¹˜, second: ë„ì°©ìœ„ì¹˜
 vector<P> adj[500];
 
 typedef struct {
@@ -41,7 +41,7 @@ int main() {
 	int N, M;
 	const int INF = 10000001;
 
-	cin >> N >> M;//N: Àå¼ÒÀÇ ¼ö, M: µµ·ÎÀÇ ¼ö
+	cin >> N >> M;//N: ì¥ì†Œì˜ ìˆ˜, M: ë„ë¡œì˜ ìˆ˜
 
 	while (N != 0 && M != 0) {
 		int S, E;
@@ -51,17 +51,17 @@ int main() {
 		for (int i = 0; i < M; i++) {
 			int s, e, w;
 			cin >> s >> e >> w;
-			adj[s].push_back(P(w, e));//first: °¡ÁßÄ¡, second: µµÂøÀ§Ä¡
+			adj[s].push_back(P(w, e));//first: ê°€ì¤‘ì¹˜, second: ë„ì°©ìœ„ì¹˜
 		}
 
 		/*for (int i = 0; i < N; i++) {
-			cout << i << "¹ø: ";
+			cout << i << "ë²ˆ: ";
 			for (P j : adj[i])
 				cout << '(' << j.second << ' ' << j.first << ") ";
 			cout << '\n';
 		}*/
 
-		for (int i = 0; i < N; i++) {//ÃÊ±âÈ­
+		for (int i = 0; i < N; i++) {//ì´ˆê¸°í™”
 			dist[i].w = INF;
 			dist[i].prev.clear();
 			visited[i] = false;
@@ -81,7 +81,7 @@ int main() {
 			if (visited[curr]) break;
 
 			visited[curr] = true;
-			if (curr == E) {//Á¦ÀÏ ºü¸¥ ÃÖ´Ü°Å¸® Ã£À½
+			if (curr == E) {//ì œì¼ ë¹ ë¥¸ ìµœë‹¨ê±°ë¦¬ ì°¾ìŒ
 				while (!pq.empty())
 					pq.pop();
 				break;
@@ -105,13 +105,13 @@ int main() {
 		remove(S, E);
 
 		/*for (int i = 0; i < N; i++) {
-			cout << i << "¹ø: ";
+			cout << i << "ë²ˆ: ";
 			for (P j : adj[i])
 				cout << '(' << j.second << ' ' << j.first << ") ";
 			cout << '\n';
 		}*/
 
-		for (int i = 0; i < N; i++) {//ÃÊ±âÈ­
+		for (int i = 0; i < N; i++) {//ì´ˆê¸°í™”
 			dist[i].w = INF;
 			dist[i].prev.clear();
 			visited[i] = false;
@@ -131,7 +131,7 @@ int main() {
 			if (visited[curr])break;
 
 			visited[curr] = true;
-			if (curr == E) {//Á¦ÀÏ ºü¸¥ ÃÖ´Ü°Å¸® Ã£À½
+			if (curr == E) {//ì œì¼ ë¹ ë¥¸ ìµœë‹¨ê±°ë¦¬ ì°¾ìŒ
 				len = dist[E].w;
 				break;
 			}
@@ -151,7 +151,7 @@ int main() {
 		cout << len << '\n';
 
 
-		//¾Æ¿¹ ÃÊ±âÈ­
+		//ì•„ì˜ˆ ì´ˆê¸°í™”
 		while (!pq.empty())
 			pq.pop();
 		for (int i = 0; i < N; i++) 
