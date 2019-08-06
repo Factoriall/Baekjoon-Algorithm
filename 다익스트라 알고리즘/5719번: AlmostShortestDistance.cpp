@@ -66,7 +66,8 @@ int main() {
 			dist[i].prev.clear();
 			visited[i] = false;
 		}
-
+		
+		//완전 최단거리 찾기, prev에 루트 저장
 		priority_queue<P, vector<P>, greater<P>> pq;
 		dist[S].w = 0;
 		dist[S].prev.push_back(-1);
@@ -102,6 +103,7 @@ int main() {
 			}
 		}
 		
+		//최단거리 루트 삭제
 		remove(S, E);
 
 		/*for (int i = 0; i < N; i++) {
@@ -117,6 +119,7 @@ int main() {
 			visited[i] = false;
 		}
 		
+		//거의 최단거리 찾기
 		dist[S].w = 0;
 		dist[S].prev.push_back(-1);
 		pq.push(P(0, S));
