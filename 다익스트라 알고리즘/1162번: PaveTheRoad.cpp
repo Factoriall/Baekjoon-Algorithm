@@ -13,7 +13,7 @@ typedef struct {
 }Info;
 
 struct cmp {
-	bool operator()(Info a, Info b) {//weight µû¶ó priority_queue Á¶Àý
+	bool operator()(Info a, Info b) {//weight 따라 priority_queue 조절
 		return a.weight > b.weight;
 	}
 };
@@ -32,7 +32,7 @@ int main() {
 	for (int i = 0; i < R; i++) {
 		int s, e, w;
 		cin >> s >> e >> w;
-		adj[s - 1].push_back(P(w, e - 1));//first: °¡ÁßÄ¡, second: µµÂøÁ¡
+		adj[s - 1].push_back(P(w, e - 1));//first: 가중치, second: 도착점
 		adj[e - 1].push_back(P(w, s - 1));
 	}
 
