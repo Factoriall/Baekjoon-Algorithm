@@ -13,7 +13,7 @@ typedef struct {
 vector<P> adj[100];
 
 struct cmp {
-	bool operator()(P a, P b) {//½Ã°£ µû¶ó priority_queue Á¶Àý
+	bool operator()(P a, P b) {//ì‹œê°„ ë”°ë¼ priority_queue ì¡°ì ˆ
 		return a.time > b.time;
 	}
 };
@@ -35,7 +35,7 @@ int main() {
 			adj[u - 1].push_back(P{ v - 1, c, d });
 		}
 
-		for (int i = 0; i < N; i++) {//ÃÊ±âÈ­
+		for (int i = 0; i < N; i++) {//ì´ˆê¸°í™”
 			for (int j = 0; j <= M; j++) {
 				dist[i][j] = INF;
 				visited[i][j] = false;
@@ -59,7 +59,7 @@ int main() {
 
 			visited[curP][curC] = true;
 
-			if (curP == N - 1) {//µµÂøÇÏ¸é ³¡
+			if (curP == N - 1) {//ë„ì°©í•˜ë©´ ë
 				cout << dist[curP][curC] << '\n';
 				isFinished = true;
 				break;
@@ -78,7 +78,7 @@ int main() {
 		if (!isFinished)
 			cout << "Poor KCM" << '\n';
 
-		for (int i = 0; i < N; i++) //¸ðµÎ ÃÊ±âÈ­
+		for (int i = 0; i < N; i++) //ëª¨ë‘ ì´ˆê¸°í™”
 			adj[i].clear();
 	}
 
