@@ -10,7 +10,7 @@ int dist[500];
 bool visited[500];
 bool isReachable;
 
-void dfs(int now) {//»çÀÌÅ¬¿¡¼­ Ãâ¹ßÁ¡À¸·Î µ¹¾Æ°¥ ¼ö ÀÖ´ÂÁö Ã¼Å©
+void dfs(int now) {//ì‚¬ì´í´ì—ì„œ ì¶œë°œì ìœ¼ë¡œ ëŒì•„ê°ˆ ìˆ˜ ìˆëŠ”ì§€ ì²´í¬
 	if (now == 0) {
 		isReachable = true;
 		return;
@@ -38,20 +38,20 @@ int main() {
 		isReachable = false;
 		cin >> N >> M >> W;
 
-		//ÃÊ±âÈ­
+		//ì´ˆê¸°í™”
 		for (int i = 0; i < N; i++) {
 			adj[i].clear();
 			visited[i] = false;
 		}
 
-		//µµ·Î Á¤º¸
+		//ë„ë¡œ ì •ë³´
 		for (int i = 0; i < M; i++) {
 			int s, e, t;
 			cin >> s >> e >> t;
 			adj[s - 1].push_back(P(e - 1, t));
 			adj[e - 1].push_back(P(s - 1, t));
 		}
-		//¿úÈ¦ Á¤º¸
+		//ì›œí™€ ì •ë³´
 		for (int i = 0; i < W; i++) {
 			int s, e, t;
 			cin >> s >> e >> t;
@@ -67,7 +67,7 @@ int main() {
 					int next = nextP.first;
 					int d = nextP.second;
 					if (dist[j] != INF && dist[next] > dist[j] + d) {
-						if (i == N - 1) {//À½ÀÇ »çÀÌÅ¬ »ı¼º, ÀÌ »çÀÌÅ¬¿¡¼­ Ãâ¹ßÁ¡À¸·Î µ¹¾Æ°¥ ¼ö ÀÖÀ¸¸é ¼º°ø
+						if (i == N - 1) {//ìŒì˜ ì‚¬ì´í´ ìƒì„±, ì´ ì‚¬ì´í´ì—ì„œ ì¶œë°œì ìœ¼ë¡œ ëŒì•„ê°ˆ ìˆ˜ ìˆìœ¼ë©´ ì„±ê³µ
 							visited[j] = true;
 							dfs(j);
 						}
