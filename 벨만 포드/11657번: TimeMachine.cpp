@@ -18,7 +18,7 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		int a, b, c;
 		cin >> a >> b >> c;
-		adj[a - 1].push_back(P(b - 1, c));//first: µµÂøÁ¡, second: ½Ã°£
+		adj[a - 1].push_back(P(b - 1, c));//first: ÂµÂµÃ‚Ã¸ÃÂ¡, second: Â½ÃƒÂ°Â£
 	}
 
 	fill(dist, dist + 500, INF);
