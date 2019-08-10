@@ -8,34 +8,17 @@ typedef pair<int, int> P;
 vector<P> adj[500];
 int dist[500];
 bool visited[500];
-bool isReachable;
-
-void dfs(int now) {//사이클에서 출발점으로 돌아갈 수 있는지 체크
-	if (now == 0) {
-		isReachable = true;
-		return;
-	}
-
-	for (P nextP : adj[now]) {
-		int next = nextP.first;
-
-		if (!visited[next]) {
-			visited[next] = true;
-			dfs(next);
-		}
-	}
-}
 
 int main() {
 	ios::sync_with_stdio(false);
 
 	int T;
-	const int INF = 25000001;
+	const int INF = 25000001;//임의의 매우 큰 수
 
 	cin >> T;
 	for (int t = 0; t < T; t++) {
 		int N, M, W;
-		isReachable = false;
+		bool isReachable = false;
 		cin >> N >> M >> W;
 
 		//초기화
@@ -59,27 +42,30 @@ int main() {
 		}
 
 		fill(dist, dist + N, INF);
-		dist[0] = 0;
-
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				for (P nextP : adj[j]) {
-					int next = nextP.first;
-					int d = nextP.second;
-					if (dist[j] != INF && dist[next] > dist[j] + d) {
-						if (i == N - 1) {//음의 사이클 생성, 이 사이클에서 출발점으로 돌아갈 수 있으면 성공
-							visited[j] = true;
-							dfs(j);
+		
+		int n = 0;
+		do {
+			if (!visited[n]) {//방문 안했다면 컴포넌트가 따로 존재한다는 의미, 다른 컴포넌트 내에서도 벨만포드 알고리즘 적용
+				dist[n] = 0;
+				visited[n] = true;
+				for (int i = 0; i < N; i++) {
+					for (int j = 0; j < N; j++) {
+						for (P nextP : adj[j]) {
+							int next = nextP.first;
+							int d = nextP.second;
+							if (dist[j] != INF && dist[next] > dist[j] + d) {
+								if (i == N - 1) {
+									isReachable = true;
+								}
+								dist[next] = dist[j] + d;
+								visited[next] = true;
+							}
 						}
-						dist[next] = dist[j] + d;
 					}
 				}
 			}
-		}
-
-		/*for (int i = 0; i < N; i++)
-			cout << dist[i] << ' ';
-		cout << '\n';*/
+			n++;
+		} while (n < N && !isReachable);
 
 		if (isReachable)
 			cout << "YES" << '\n';
