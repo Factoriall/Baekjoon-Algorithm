@@ -52,7 +52,7 @@ int main() {
 				int d = next.second;
 				if (dist[j] != INF && dist[n] > dist[j] + d - city[n]) {
 					dist[n] = dist[j] + d - city[n];
-					if (i == N - 1) {//À½ÀÇ »çÀÌÅ¬¿¡¼­ ¸ñÀûÁö±îÁö °¡´ÂÁö È®ÀÎ
+					if (i == N - 1) {//ìŒì˜ ì‚¬ì´í´ì—ì„œ ëª©ì ì§€ê¹Œì§€ ê°€ëŠ”ì§€ í™•ì¸
 						bool visited[100];
 						fill(visited, visited + N, false);
 						visited[j] = true;
