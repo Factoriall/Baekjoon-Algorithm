@@ -19,7 +19,7 @@ int main() {
 
 	cin >> N >> R;
 
-	for (int i = 0; i < N; i++) {//�ʱ�ȭ
+	for (int i = 0; i < N; i++) {//ÃÊ±âÈ­
 		for (int j = 0; j < N; j++) {
 			if (i == j) {
 				dist[i][j] = 0;
@@ -95,7 +95,7 @@ int main() {
 		int next = travel[i + 1];
 
 		//cout << '[' << now << "->" << next << ']' << '\n';
-		//cout << "���Ϸ�: " << naelro[now][next] << ", �ƴ�: " << dist[now][next] << '\n';
+		//cout << "³»ÀÏ·Î: " << naelro[now][next] << ", ¾Æ´Ô: " << dist[now][next] << '\n';
 		yes += naelro[now][next];
 		no += dist[now][next];
 	}
