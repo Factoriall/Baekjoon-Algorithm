@@ -5,7 +5,8 @@ using namespace std;
 int main() {
 	bool cmp[500][500] = { 0 };
 	int N, M;
-
+	
+	ios::sync_with_stdio(false); 
 	cin >> N >> M;
 
 	for (int i = 0; i < M; i++) {
