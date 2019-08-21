@@ -9,7 +9,7 @@ int main() {
 	int dist[250][250] = { 0 };
 	scanf("%d %d", &N, &M);
 
-	for (int i = 0; i < N; i++) {//�ʱ�ȭ
+	for (int i = 0; i < N; i++) {//ÃÊ±âÈ­
 		for (int j = 0; j < N; j++) {
 			if (i == j) dist[i][j] = 0;
 			else dist[i][j] = INF;
