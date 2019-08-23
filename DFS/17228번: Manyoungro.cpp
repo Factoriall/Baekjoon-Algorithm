@@ -22,9 +22,9 @@ void roadTrack(int now, int start, int len, string line) {
 		copy.push_back(a);
 
 		//cout << "First - next: " << next << ", start: " << start << ", len: " << len << ", copy: " << copy << '\n';
-		if (P[len] == a) {//¸¸¾à ÀÏÄ¡ÇÒ ½Ã 
+		if (P[len] == a) {//ë§Œì•½ ì¼ì¹˜í•  ì‹œ 
 			//cout << "correct\n";
-			if (len == P.size() - 1) {//¸¸¾à ¸ðµÎ ÀÏÄ¡ÇÒ ½Ã cnt Ãß°¡ ¹× Á¶Á¤ ÇÊ¿ä
+			if (len == P.size() - 1) {//ë§Œì•½ ëª¨ë‘ ì¼ì¹˜í•  ì‹œ cnt ì¶”ê°€ ë° ì¡°ì • í•„ìš”
 				cout << "finished\n";
 				cnt++;
 				start++;
@@ -36,7 +36,7 @@ void roadTrack(int now, int start, int len, string line) {
 			else
 				len++;
 		}
-		else {//ÀÏÄ¡ ¾ÈÇÒ ½Ã Á¶Á¤
+		else {//ì¼ì¹˜ ì•ˆí•  ì‹œ ì¡°ì •
 			//cout << "wrong\n";
 			start++;
 			while (start != now && copy.substr(start, now) != P.substr(0, len)) {
