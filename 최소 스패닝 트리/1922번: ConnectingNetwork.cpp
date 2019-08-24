@@ -6,12 +6,12 @@ using namespace std;
 int uf[1000];
 
 
-int find(int a) {//°°Àº ÁıÇÕ¿¡ ÀÖ´ÂÁö È®ÀÎ ÀÛ¾÷
+int find(int a) {//ê°™ì€ ì§‘í•©ì— ìˆëŠ”ì§€ í™•ì¸ ì‘ì—…
 	if (uf[a] < 0) return a;
 	return uf[a] = find(uf[a]);
 }
 
-bool merge(int a, int b) {//°°Àº ÁıÇÕ¿¡ ÀÖ´ÂÁö È®ÀÎ ÈÄ ÀÖÀ¸¸é false, ´Ù¸£¸é true
+bool merge(int a, int b) {//ê°™ì€ ì§‘í•©ì— ìˆëŠ”ì§€ í™•ì¸ í›„ ìˆìœ¼ë©´ false, ë‹¤ë¥´ë©´ true
 	a = find(a);
 	b = find(b);
 	if (a == b) return false;
@@ -21,9 +21,9 @@ bool merge(int a, int b) {//°°Àº ÁıÇÕ¿¡ ÀÖ´ÂÁö È®ÀÎ ÈÄ ÀÖÀ¸¸é false, ´Ù¸£¸é true
 
 struct Edge {
 	int u, v, w;
-	Edge() : Edge(-1, -1, 0) {}//µğÆúÆ® »ı¼ºÀÚ
-	Edge(int u1, int v1, int w1) : u(u1), v(v1), w(w1) {}//»ı¼ºÀÚ
-	bool operator <(const Edge &O) { return w < O.w; }//< ¿¬»êÀÚ ¿À¹ö·Îµù
+	Edge() : Edge(-1, -1, 0) {}//ë””í´íŠ¸ ìƒì„±ì
+	Edge(int u1, int v1, int w1) : u(u1), v(v1), w(w1) {}//ìƒì„±ì
+	bool operator <(const Edge &O) { return w < O.w; }//< ì—°ì‚°ì ì˜¤ë²„ë¡œë”©
 };
 
 Edge e[100000];
@@ -37,7 +37,7 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		int a, b, c;
 		scanf("%d %d %d", &a, &b, &c);
-		e[i] = Edge(a - 1, b - 1, c);//»ı¼ºÀÚ
+		e[i] = Edge(a - 1, b - 1, c);//ìƒì„±ì
 	}
 
 	sort(e, e + M);
@@ -48,7 +48,7 @@ int main() {
 
 	for (int i = 0; ; i++) {
 		if (merge(e[i].u, e[i].v)) {
-			result += e[i].w;//°¡ÁßÄ¡ ÇÕ
+			result += e[i].w;//ê°€ì¤‘ì¹˜ í•©
 			if (++cnt == N - 1) break;
 		}
 	}
