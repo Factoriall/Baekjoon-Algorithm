@@ -33,7 +33,7 @@ Planet zp[100000];
 
 struct Edge {
 	int u, v, w;
-	Edge() : u(-1), v(-1), w(0) {}//±âº» »ı¼ºÀÚ°¡ Á¸ÀçÇØ¾ßÇÕ´Ï´Ù!
+	Edge() : u(-1), v(-1), w(0) {}//ê¸°ë³¸ ìƒì„±ìê°€ ì¡´ì¬í•´ì•¼í•©ë‹ˆë‹¤!
 	Edge(int u1, int v1, int w1) : u(u1), v(v1), w(w1){}
 	bool operator<(const Edge &O) { return w < O.w; }
 };
