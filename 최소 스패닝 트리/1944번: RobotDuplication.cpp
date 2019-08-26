@@ -42,29 +42,29 @@ Edge e[31626];
 
 int main() {
 	int N, M;
-	int en = 0;//°£¼± ¼ö
-	int rn = 0;//·Îº¿ ¹øÈ£
+	int en = 0;//ê°„ì„  ìˆ˜
+	int rn = 0;//ë¡œë´‡ ë²ˆí˜¸
 
 	scanf("%d %d", &N, &M);
 
-	//¿øÇÏ´Â´ë·Î °íÃÄ¹ö¸®±â
+	//ì›í•˜ëŠ”ëŒ€ë¡œ ê³ ì³ë²„ë¦¬ê¸°
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
 			char c;
 			scanf("%c", &c);
-			if (c == '1')//º®ÀÌ¸é -1·Î
+			if (c == '1')//ë²½ì´ë©´ -1ë¡œ
 				map[i][j] = -1;
-			if (c == 'S' || c == 'K') {//·Îº¿ ¹× ¿­¼¼ À§Ä¡¸é Á¤Á¡ ¹øÈ£¸¦ ºÙ¿©ÁØ´Ù
+			if (c == 'S' || c == 'K') {//ë¡œë´‡ ë° ì—´ ìœ„ì¹˜ë©´ ì •ì  ë²ˆí˜¸ë¥¼ ë¶™ì—¬ì¤€ë‹¤
 				map[i][j] = ++rn;
 				v.push_back(Vertex(i, j));
 			}
-			if (c == '\n')//¿£ÅÍ µé¾î°¡´Â°Å´Â »©¹ö¸°´Ù
+			if (c == '\n')//ì—”í„° ë“¤ì–´ê°€ëŠ”ê±°ëŠ” ë¹¼ë²„ë¦°ë‹¤
 				j--;
 		}
 	}
 	
-	//BFS °úÁ¤
-	bool isFirst = true;//Ã³À½ ³Ö´Â°Å È®ÀÎ
+	//BFS ê³¼ì •
+	bool isFirst = true;//ì²˜ìŒ ë„£ëŠ”ê±° í™•ì¸
 	int chk = 0;
 	for (Vertex s : v) {
 		queue<Vertex> q;
@@ -73,7 +73,7 @@ int main() {
 		int start = map[s.y][s.x];
 		q.push(s);
 		visited[s.y][s.x] = true;
-		map[s.y][s.x] = 0;//ÃÊ±âÈ­ ÅëÇØ ´ÙÀ½¿¡ ÀÌÁ¡Àº Å½»öÀ» ¾ÈÇÏ°Ô µÈ´Ù, ¹İÀ¸·Î ÁÙÀÌ´Â È¿°ú
+		map[s.y][s.x] = 0;//ì´ˆê¸°í™” í†µí•´ ë‹¤ìŒì— ì´ì ì€ íƒìƒ‰ì„ ì•ˆí•˜ê²Œ ëœë‹¤, ë°˜ìœ¼ë¡œ ì¤„ì´ëŠ” íš¨ê³¼
 		int cnt = 0;
 		while (!q.empty()) {
 			int qSize = q.size();
@@ -85,15 +85,15 @@ int main() {
 					int ny = y + dy[i];
 					int nx = x + dx[i];
 					if (ny >= 0 && ny < N && nx >= 0 && nx < N && !visited[ny][nx]) {
-						if (map[ny][nx] == 0) {//ºó °ø°£
+						if (map[ny][nx] == 0) {//ë¹ˆ ê³µê°„
 							q.push(Vertex(ny, nx));
 							visited[ny][nx] = true;
 						}
-						if (map[ny][nx] != 0 && map[ny][nx] != -1) {//¿­¼è °ø°£
+						if (map[ny][nx] != 0 && map[ny][nx] != -1) {//ì—´ì‡  ê³µê°„
 							chk++;
 							q.push(Vertex(ny, nx));
 							visited[ny][nx] = true;
-							e[en++] = Edge(start - 1, map[ny][nx] - 1, cnt + 1);//°£¼± Á¤º¸ ³Ö±â
+							e[en++] = Edge(start - 1, map[ny][nx] - 1, cnt + 1);//ê°„ì„  ì •ë³´ ë„£ê¸°
 						}
 					}
 				}
@@ -101,7 +101,7 @@ int main() {
 			cnt++;
 		}
 		
-		if (isFirst) {//Ã³À½¿¡ chk °³¼ö°¡ Mº¸´Ù ÀûÀ¸¸é ¸ğµÎ Ã£Áö ¸øÇÑ °Í! ±×´ë·Î ³¡³½´Ù.
+		if (isFirst) {//ì²˜ìŒì— chk ê°œìˆ˜ê°€ Më³´ë‹¤ ì ìœ¼ë©´ ëª¨ë‘ ì°¾ì§€ ëª»í•œ ê²ƒ! ê·¸ëŒ€ë¡œ ëë‚¸ë‹¤.
 			if (chk != M) {
 				puts("-1");
 				return 0;
@@ -114,9 +114,9 @@ int main() {
 	int result = 0; int cnt = 0;
 	fill(uf, uf + M + 1, -1);
 	for (int i = 0; ; i++) {
-		if (merge(e[i].u, e[i].v)) {//¸¸¾à true·Î ¹İÈ¯µÇ¾ú´Ù¸é result ÇÕÇÏ±â
+		if (merge(e[i].u, e[i].v)) {//ë§Œì•½ trueë¡œ ë°˜í™˜ë˜ì—ˆë‹¤ë©´ result í•©í•˜ê¸°
 			result += e[i].w;
-			if (++cnt == M)//°³¼ö ÆÄ¾ÇÇØ¼­ ³¡³½´Ù.
+			if (++cnt == M)//ê°œìˆ˜ íŒŒì•…í•´ì„œ ëë‚¸ë‹¤.
 				break;
 		}
 	}
