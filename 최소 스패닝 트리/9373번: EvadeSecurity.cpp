@@ -14,12 +14,12 @@ int find(int a) {
 	return uf[a] = find(uf[a]);
 }
 
-bool merge(int u, int v) {//u¿¡ ¹«Á¶°Ç º®ÀÇ Á¤º¸
-	if (u == -1) {//¿ŞÂÊ º®°ú ¿¬°á
+bool merge(int u, int v) {//uì— ë¬´ì¡°ê±´ ë²½ì˜ ì •ë³´
+	if (u == -1) {//ì™¼ìª½ ë²½ê³¼ ì—°ê²°
 		leftConnect.push_back(v);
 		return true;
 	}
-	if (u == -2) {//¿À¸¥ÂÊ º®°ú ¿¬°á
+	if (u == -2) {//ì˜¤ë¥¸ìª½ ë²½ê³¼ ì—°ê²°
 		rightConnect.push_back(v);
 		return true;
 	}
@@ -69,13 +69,13 @@ int main() {
 			scanf("%d %d %d", &x, &y, &r);
 			s[i] = Sensor(x, y, r);
 		}
-		//¿ŞÂÊ º®À» Á¤Á¡ -1, ¿À¸¥ÂÊ º®À» -2·Î ¼³Á¤,
+		//ì™¼ìª½ ë²½ì„ ì •ì  -1, ì˜¤ë¥¸ìª½ ë²½ì„ -2ë¡œ ì„¤ì •,
 		int edgeNum = 0;
 		for (int i = 0; i < n; i++) {
-			//º®°úÀÇ °Å¸® Á¤º¸ »ğÀÔ
+			//ë²½ê³¼ì˜ ê±°ë¦¬ ì •ë³´ ì‚½ì…
 			e[edgeNum++] = Edge(-1, i, s[i].x - s[i].r);
 			e[edgeNum++] = Edge(-2, i, w - s[i].x - s[i].r);
-			for (int j = i + 1; j < n; j++) //³ª¸ÓÁö Á¡°ú °Å¸® Á¤º¸ »ğÀÔ
+			for (int j = i + 1; j < n; j++) //ë‚˜ë¨¸ì§€ ì ê³¼ ê±°ë¦¬ ì •ë³´ ì‚½ì…
 				e[edgeNum++] = Edge(j, i, 
 					sqrt((long long)(s[i].x - s[j].x)*(s[i].x - s[j].x) + (long long)(s[i].y - s[j].y) * (s[i].y - s[j].y)) - (s[i].r + s[j].r));
 		}
@@ -104,7 +104,7 @@ int main() {
 								if (e[i].w <= 0)
 									printf("0\n");
 								else
-									printf("%.6lf\n", e[i].w / 2);//%lf: ÃÖ´ë À¯È¿ ÀÚ¸®¼ö 15°³, %f: 6°³
+									printf("%.6lf\n", e[i].w / 2);//%lf: ìµœëŒ€ ìœ íš¨ ìë¦¬ìˆ˜ 15ê°œ, %f: 6ê°œ
 								break;
 							}
 						}
