@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-long long arr[2097152];//¼¼±×¸ÕÆ® Æ®¸®
+long long arr[2097152];//ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬
 
 long long sum(int L, int R, int nodeNum, int nodeL, int nodeR) {
 	if (R < nodeL || nodeR < L) return 0;
@@ -24,7 +24,7 @@ int main() {
 	for (int i = start; i < start + N; i++)
 		scanf("%lld", &arr[i]);
 
-	for (int i = start - 1; i > 0; i--)//¼¼±×¸ÕÆ® Æ®¸® »ı¼º
+	for (int i = start - 1; i > 0; i--)//ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ ìƒì„±
 		arr[i] = arr[i * 2] + arr[i * 2 + 1];
 
 	/*for (int i = 1; i < start * 2; i++)
@@ -35,7 +35,7 @@ int main() {
 		int a, b;
 		long long c;
 		scanf("%d %d %lld", &a, &b, &c);
-		if (a == 1) {//¾÷µ¥ÀÌÆ® ÇÏ´Â ¹ı
+		if (a == 1) {//ì—…ë°ì´íŠ¸ í•˜ëŠ” ë²•
 			int sIdx = b - 1 + start;
 			arr[sIdx] = c;
 			while (sIdx > 1) {
