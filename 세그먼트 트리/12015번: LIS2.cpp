@@ -5,7 +5,7 @@ using namespace std;
 
 typedef pair<int, int> P;
 
-int segment[2097152];//first: ¼ıÀÚ Å©±â, second: ÀÎµ¦½º
+int segment[2097152];//first: ìˆ«ì í¬ê¸°, second: ì¸ë±ìŠ¤
 int S = 1;
 P arr[1000000];
 
@@ -28,7 +28,7 @@ void update(int i, int val) {
 	segment[i] = val;
 	while (i > 1) {
 		i = i / 2;
-		if (segment[i] > val)//¿ø·¡ °ªÀÌ ´õ Å©¸é ¾÷µ¥ÀÌÆ® ¾ÈÇÔ
+		if (segment[i] > val)//ì›ë˜ ê°’ì´ ë” í¬ë©´ ì—…ë°ì´íŠ¸ ì•ˆí•¨
 			break;
 		segment[i] = val;
 	}
@@ -54,7 +54,7 @@ int main() {
 	sort(arr, arr+N, cmp);
 
 	for (int i = 0; i < N; i++) {
-		int idx = arr[i].second;//ÀÎµ¦½º ÃßÃâ
+		int idx = arr[i].second;//ì¸ë±ìŠ¤ ì¶”ì¶œ
 		int m = maxNum(0, idx, 1, 0, S - 1);
 		update(idx, m + 1);
 		//for (int i = 1; i < S * 2; i++)
