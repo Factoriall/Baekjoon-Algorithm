@@ -17,7 +17,7 @@ void myTurn(vector<Minions> my, vector<Minions> oppo, vector<int> order, bool is
 	if (flag)
 		return;
 
-	if (oppo.empty()) {//¼º°ø Á¶°Ç -> ÀûÀÌ ¸ğµÎ Á×¾úÀ» ½Ã
+	if (oppo.empty()) {//ì„±ê³µ ì¡°ê±´ -> ì ì´ ëª¨ë‘ ì£½ì—ˆì„ ì‹œ
 		flag = true;
 		printf("%d\n", order.size());
 		for (int i = 0; i < order.size(); i++) {
@@ -29,7 +29,7 @@ void myTurn(vector<Minions> my, vector<Minions> oppo, vector<int> order, bool is
 		return;
 	}
 
-	//½ÇÆĞ Á¶°Ç -> ¸ğµç ¾Æ±º ÇÏ¼öÀÎÀÌ °ø°İÇÏ°í ¸ğµ¶±îÁö »ç¿ëÇß´Âµ¥µµ ÀûÀÌ ³²¾ÒÀ» ½Ã
+	//ì‹¤íŒ¨ ì¡°ê±´ -> ëª¨ë“  ì•„êµ° í•˜ìˆ˜ì¸ì´ ê³µê²©í•˜ê³  ëª¨ë…ê¹Œì§€ ì‚¬ìš©í–ˆëŠ”ë°ë„ ì ì´ ë‚¨ì•˜ì„ ì‹œ
 	bool isf = true;
 	if (!modok)
 		isf = false;
@@ -44,7 +44,7 @@ void myTurn(vector<Minions> my, vector<Minions> oppo, vector<int> order, bool is
 	if (isf)
 		return;
 
-	if (!modok) {//¸ğµ¶ »ç¿ë
+	if (!modok) {//ëª¨ë… ì‚¬ìš©
 		vector<Minions> myCopy = my;
 		vector<Minions> opCopy = oppo;
 		bool finCopy[7];
@@ -89,18 +89,18 @@ void myTurn(vector<Minions> my, vector<Minions> oppo, vector<int> order, bool is
 	
 	for (int i = 0; i < my.size(); i++) {
 		for (int j = 0; j < oppo.size(); j++) {
-			if (!isFinished[my[i].n]) {//°ø°İ ¾ÈÇß´Ù¸é
-				//¹Ì¸® º¹Á¦
+			if (!isFinished[my[i].n]) {//ê³µê²© ì•ˆí–ˆë‹¤ë©´
+				//ë¯¸ë¦¬ ë³µì œ
 				vector<Minions> myCopy = my;
 				vector<Minions> opCopy = oppo;
 				bool finCopy[7];
 				for (int i = 0; i < N; i++)
 					finCopy[i] = isFinished[i];
 
-				//°ø°İ
+				//ê³µê²©
 				myCopy[i].vit -= opCopy[j].atk;
 				opCopy[j].vit -= myCopy[i].atk;
-				order.push_back(myCopy[i].n * 10 + opCopy[j].n);//¾Æ±º ÇÏ¼öÀÎ: 10ÀÇ ÀÚ¸®, Àû ÇÏ¼öÀÎ: 1ÀÇ ÀÚ¸®
+				order.push_back(myCopy[i].n * 10 + opCopy[j].n);//ì•„êµ° í•˜ìˆ˜ì¸: 10ì˜ ìë¦¬, ì  í•˜ìˆ˜ì¸: 1ì˜ ìë¦¬
 				finCopy[myCopy[i].n] = true;
 				if (myCopy[i].vit <= 0)
 					myCopy.erase(myCopy.begin() + i);
