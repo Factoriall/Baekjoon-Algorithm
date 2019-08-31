@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-typedef pair<int, int> P;//first: �ּڰ�, second: �ִ�
+typedef pair<int, int> P;//first: ÃÖ¼Ú°ª, second: ÃÖ´ñ°ª
 int S = 1;
 P arr[262144];
 
