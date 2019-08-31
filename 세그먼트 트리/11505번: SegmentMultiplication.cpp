@@ -34,7 +34,7 @@ int main() {
 	for (int i = size + N; i < size * 2; i++)
 		arr[i] = 1;
 
-	for (int i = size - 1; i > 0; i--)//¼¼±×¸ÕÆ® Æ®¸® »ý¼º
+	for (int i = size - 1; i > 0; i--)//Â¼Â¼Â±Ã—Â¸Ã•Ã†Â® Ã†Â®Â¸Â® Â»Ã½Â¼Âº
 		arr[i] = (long long)(arr[2 * i] * arr[2 * i + 1]) % MOD;
 	
 	for (int i = 0; i < M + K; i++) {
