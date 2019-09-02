@@ -33,12 +33,12 @@ int main() {
 		vector<int> ans;
 		scanf("%d %d", &n, &m);
 
-		while (s < m || s < n)//µÑ´Ù µûÁ®¼­ 
+		while (s < m || s < n)//ÂµÃ‘Â´Ã™ ÂµÃ»ÃÂ®Â¼Â­ 
 			s *= 2;
 		
 		s *= 2;
 
-		int p = s + s / 2 - 1;//°ª ÀúÀå
+		int p = s + s / 2 - 1;//Â°Âª Ã€ÃºÃ€Ã¥
 		for (int i = 0; i < n; i++) {
 			pnt[i] = p;
 			tree[p] = 1;
@@ -52,7 +52,7 @@ int main() {
 			printf("%d ", tree[i]);
 		printf("\n");*/
 		
-		//construct ÇÔ¼ö
+		//construct Ã‡Ã”Â¼Ã¶
 		for (int i = s - 1; i > 0; i--)
 			tree[i] = tree[2 * i] + tree[2 * i + 1];
 
