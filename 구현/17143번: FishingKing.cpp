@@ -43,7 +43,7 @@ int main() {
 
 	int result = 0;
 	for (int t = 0; t < C; t++) {
-		//³¬½Ã¿ÕÀÌ »ó¾î ³¬´Â Â÷·Ê
+		//ë‚šì‹œì™•ì´ ìƒì–´ ë‚šëŠ” ì°¨ë¡€
 		for (int i = 0; i < R; i++) {
 			if (f[i][t].s != -1) {
 				result += f[i][t].z;
@@ -52,24 +52,24 @@ int main() {
 			}
 		}
 
-		//»ó¾î°¡ ¿òÁ÷ÀÌ´Â Â÷·Ê
+		//ìƒì–´ê°€ ì›€ì§ì´ëŠ” ì°¨ë¡€
 		Shark copy[100][100];
 		for (int i = 0; i < R; i++) {
 			for (int j = 0; j < C; j++) {
 				if (f[i][j].d != -1) {
-					int m;//»ó¾î ¼Óµµ
-					if (f[i][j].d > 1) {//¿ÞÂÊ&¿À¸¥ÂÊ
+					int m;//ìƒì–´ ì†ë„
+					if (f[i][j].d > 1) {//ì™¼ìª½&ì˜¤ë¥¸ìª½
 						m = f[i][j].s % (2*(C - 1));
 						//printf("%d\n", m);
 						int nc;
-						if (f[i][j].d == 2) { //¿À¸¥ÂÊ
+						if (f[i][j].d == 2) { //ì˜¤ë¥¸ìª½
 							nc = (j + m) % (2 * (C - 1));
 							if (nc > (C - 1)) {
 								nc = 2 * (C - 1) - nc;
 								f[i][j].d = 3;
 							}
 						}
-						else { //¿ÞÂÊ
+						else { //ì™¼ìª½
 							
 							nc = (j - m) % (2 * (C - 1));
 							if (nc < 0)
@@ -86,11 +86,11 @@ int main() {
 							continue;
 						copy[i][nc] = f[i][j];
 					}
-					else {//À§&¾Æ·¡
+					else {//ìœ„&ì•„ëž˜
 						m = f[i][j].s % (2*(R - 1));
 						//printf("%d\n", m);
 						int nr;
-						if (f[i][j].d == 0) {//À§
+						if (f[i][j].d == 0) {//ìœ„
 							nr = (i - m) % (2 * (R - 1));
 							if (nr < 0)
 								nr += (2 * (R - 1));
