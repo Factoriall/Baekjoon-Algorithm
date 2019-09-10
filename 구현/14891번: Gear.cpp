@@ -30,15 +30,15 @@ int main(){
 		scanf("%d %d", &n, &r);
 		n--;
 
-		int rcnt = 0;//¿À¸¥ÂÊ µ¹¸®´Â Åé´Ï¹ÙÄû °³¼ö
+		int rcnt = 0;//ì˜¤ë¥¸ìª½ ëŒë¦¬ëŠ” í†±ë‹ˆë°”í€´ ê°œìˆ˜
 		int change;
-		for (int rd = n + 1; rd < 4; rd++) {//¿À¸¥ÂÊ
+		for (int rd = n + 1; rd < 4; rd++) {//ì˜¤ë¥¸ìª½
 			if (g[rd - 1][2] == g[rd][6])
 				break;
 			rcnt++;
 		}
-		int lcnt = 0;//¿ŞÂÊ µ¹¸®´Â Åé´Ï¹ÙÄû °³¼ö
-		for (int ld = n - 1; ld >= 0; ld--) {//¿ŞÂÊ
+		int lcnt = 0;//ì™¼ìª½ ëŒë¦¬ëŠ” í†±ë‹ˆë°”í€´ ê°œìˆ˜
+		for (int ld = n - 1; ld >= 0; ld--) {//ì™¼ìª½
 			if (g[ld + 1][6] == g[ld][2])
 				break;
 			lcnt++;
@@ -50,7 +50,7 @@ int main(){
 				counterclock(n - t);
 			else
 				clock(n - t);
-			change = -change;//È¸Àü¹æÇâ º¯°æ
+			change = -change;//íšŒì „ë°©í–¥ ë³€ê²½
 		}
 		change = r;
 		for (int t = 1; t <= rcnt; t++) {
@@ -58,7 +58,7 @@ int main(){
 				counterclock(n + t);
 			else
 				clock(n + t);
-			change = -change;//È¸Àü¹æÇâ º¯°æ
+			change = -change;//íšŒì „ë°©í–¥ ë³€ê²½
 		}
 		
 		if (r == 1)
