@@ -11,7 +11,7 @@ int arr[20];
 void dfs(int n) {
 	if (n == N)
 		return;
-	if (currentSum + arr[n] == S)//ÀÌ·¸°Ô arr[n]ÀÌ ´õÇØÁö°Ô ÇØ¾ßµÈ´Ù!
+	if (currentSum + arr[n] == S)//ì´ë ‡ê²Œ arr[n]ì´ ë”í•´ì§€ê²Œ í•´ì•¼ëœë‹¤!
 		cnt++;
 	dfs(n + 1);
 	currentSum += arr[n];
