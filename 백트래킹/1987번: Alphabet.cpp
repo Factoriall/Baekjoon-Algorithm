@@ -8,7 +8,7 @@ int R, C;
 int dy[4] = { 1,0,-1,0 };
 int dx[4] = { 0,1,0,-1 };
 
-char map[20][20];
+char map[21][20];//scanf는 개행문자를 받으므로 21 넣어줘야 
 bool AlpVisited[26];
 bool visited[20][20];
 
