@@ -13,14 +13,14 @@ void copymap(int copy[20][20], int origin[20][20]) {
 			copy[i][j] = origin[i][j];
 }
 
-//dir - 0 : ¿À¸¥ÂÊ, 1: ¾Æ·¡ÂÊ, 2: ¿ÞÂÊ, 3: À§ÂÊ
+//dir - 0 : ì˜¤ë¥¸ìª½, 1: ì•„ëž˜ìª½, 2: ì™¼ìª½, 3: ìœ„ìª½
 void dfs(int n, int dir) {
 	int cnt = 0;
-	if (dir == 0) {//¿À¸¥ÂÊ
+	if (dir == 0) {//ì˜¤ë¥¸ìª½
 		for (int i = 0; i < N; i++) {
-			int py = N - 1;//³ÖÀ» À§Ä¡
-			int strd = 0;//±âÁØÀÇ °ª
-			int sy;//±âÁØÀÇ À§Ä¡
+			int py = N - 1;//ë„£ì„ ìœ„ì¹˜
+			int strd = 0;//ê¸°ì¤€ì˜ ê°’
+			int sy;//ê¸°ì¤€ì˜ ìœ„ì¹˜
 			for (int j = N - 1; j >= 0; j--) {
 				if (map[i][j] != 0) {
 					if (strd == 0) {
@@ -30,11 +30,11 @@ void dfs(int n, int dir) {
 							cnt = max(cnt, map[i][j]);
 					}
 					else {
-						if (map[i][j] == strd) {//°°À¸¸é °öÇÏ±â
+						if (map[i][j] == strd) {//ê°™ìœ¼ë©´ ê³±í•˜ê¸°
 							map[i][py] = 2 * strd;
 							strd = 0;
 						}
-						else {//´Ù¸£¸é ±âÁØ º¯°æ
+						else {//ë‹¤ë¥´ë©´ ê¸°ì¤€ ë³€ê²½
 							map[i][py] = strd;
 							strd = map[i][j];
 							sy = j;
@@ -50,11 +50,11 @@ void dfs(int n, int dir) {
 				map[i][py] = strd;
 		}
 	}
-	if (dir == 1) {//¾Æ·¡ÂÊ
+	if (dir == 1) {//ì•„ëž˜ìª½
 		for (int j = 0; j < N; j++) {
-			int px = N - 1;//³ÖÀ» À§Ä¡
-			int strd = 0;//±âÁØÀÇ °ª
-			int sx;//±âÁØÀÇ À§Ä¡
+			int px = N - 1;//ë„£ì„ ìœ„ì¹˜
+			int strd = 0;//ê¸°ì¤€ì˜ ê°’
+			int sx;//ê¸°ì¤€ì˜ ìœ„ì¹˜
 			for (int i = N - 1; i >= 0; i--) {
 				if (map[i][j] != 0) {
 					if (strd == 0) {
@@ -64,11 +64,11 @@ void dfs(int n, int dir) {
 							cnt = max(cnt, map[i][j]);
 					}
 					else {
-						if (map[i][j] == strd) {//°°À¸¸é °öÇÏ±â
+						if (map[i][j] == strd) {//ê°™ìœ¼ë©´ ê³±í•˜ê¸°
 							map[px][j] = 2 * strd;
 							strd = 0;
 						}
-						else {//´Ù¸£¸é ±âÁØ º¯°æ
+						else {//ë‹¤ë¥´ë©´ ê¸°ì¤€ ë³€ê²½
 							map[px][j] = strd;
 							strd = map[i][j];
 							sx = i;
@@ -84,11 +84,11 @@ void dfs(int n, int dir) {
 				map[px][j] = strd;
 		}
 	}
-	if (dir == 2) {//¿ÞÂÊ
+	if (dir == 2) {//ì™¼ìª½
 		for (int i = 0; i < N; i++) {
-			int py = 0;//³ÖÀ» À§Ä¡
-			int strd = 0;//±âÁØÀÇ °ª
-			int sy;//±âÁØÀÇ À§Ä¡
+			int py = 0;//ë„£ì„ ìœ„ì¹˜
+			int strd = 0;//ê¸°ì¤€ì˜ ê°’
+			int sy;//ê¸°ì¤€ì˜ ìœ„ì¹˜
 			for (int j = 0; j < N; j++) {
 				if (map[i][j] != 0) {
 					if (strd == 0) {
@@ -98,11 +98,11 @@ void dfs(int n, int dir) {
 							cnt = max(cnt, map[i][j]);
 					}
 					else {
-						if (map[i][j] == strd) {//°°À¸¸é °öÇÏ±â
+						if (map[i][j] == strd) {//ê°™ìœ¼ë©´ ê³±í•˜ê¸°
 							map[i][py] = 2 * strd;
 							strd = 0;
 						}
-						else {//´Ù¸£¸é ±âÁØ º¯°æ
+						else {//ë‹¤ë¥´ë©´ ê¸°ì¤€ ë³€ê²½
 							map[i][py] = strd;
 							strd = map[i][j];
 							sy = j;
@@ -118,11 +118,11 @@ void dfs(int n, int dir) {
 				map[i][py] = strd;
 		}
 	}
-	if (dir == 3) {//À§ÂÊ
+	if (dir == 3) {//ìœ„ìª½
 		for (int j = 0; j < N; j++) {
-			int px = 0;//³ÖÀ» À§Ä¡
-			int strd = 0;//±âÁØÀÇ °ª
-			int sx;//±âÁØÀÇ À§Ä¡
+			int px = 0;//ë„£ì„ ìœ„ì¹˜
+			int strd = 0;//ê¸°ì¤€ì˜ ê°’
+			int sx;//ê¸°ì¤€ì˜ ìœ„ì¹˜
 			for (int i = 0; i < N; i++) {
 				if (map[i][j] != 0) {
 					if (strd == 0) {
@@ -132,11 +132,11 @@ void dfs(int n, int dir) {
 							cnt = max(cnt, map[i][j]);
 					}
 					else {
-						if (map[i][j] == strd) {//°°À¸¸é °öÇÏ±â
+						if (map[i][j] == strd) {//ê°™ìœ¼ë©´ ê³±í•˜ê¸°
 							map[px][j] = 2 * strd;
 							strd = 0;
 						}
-						else {//´Ù¸£¸é ±âÁØ º¯°æ
+						else {//ë‹¤ë¥´ë©´ ê¸°ì¤€ ë³€ê²½
 							map[px][j] = strd;
 							strd = map[i][j];
 							sx = i;
