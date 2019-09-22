@@ -89,7 +89,7 @@ void dfs(int n) {
 			for (int j = 0; j < 4; j++) {
 				if (T[j].name == M[n].op) {
 					for (int t = 0; t < 3; t++) {
-						if (t == 0) {//myÆÀ ½Â¸®
+						if (t == 0) {//myÃ†Ã€ Â½Ã‚Â¸Â®
 							double tmp = T[j].score[nIdx[j]];
 							T[i].score[nIdx[i] + 3] = T[i].score[nIdx[i]] * M[n].wp;
 							T[j].score[nIdx[j]] = T[j].score[nIdx[j]] * M[n].lp;
