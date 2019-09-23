@@ -28,13 +28,13 @@ int main() {
 			if (rem != b)
 				isPossible = false;
 		}
-		else {//Ãâ±İ
-			if (rem + a >= 0) {//¾ç¼öÀÏ ½Ã
+		else {//ÃƒÃ¢Â±Ã
+			if (rem + a >= 0) {//Â¾Ã§Â¼Ã¶Ã€Ã Â½Ãƒ
 				rem = rem + a;
 				if (rem != b)
 					isPossible = false;
 			}
-			else {//À½¼öÀÏ ½Ã
+			else {//Ã€Â½Â¼Ã¶Ã€Ã Â½Ãƒ
 				lowLimit = max(lowLimit, b + 1);
 				long long k = b - a - rem;
 				if (gd == 0)
