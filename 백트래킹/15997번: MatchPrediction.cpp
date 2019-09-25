@@ -41,7 +41,7 @@ Match M[6];
 double result[4];
 
 void dfs(int n) {
-	if (percent == 0)//È®·üÀÌ 0ÀÌ¸é ±»ÀÌ ÇÒ ÇÊ¿ä ¾øÀ½
+	if (percent == 0)//í™•ë¥ ì´ 0ì´ë©´ êµ³ì´ í•  í•„ìš” ì—†ìŒ
 		return;
 	if (n == 6) {
 		vector<R> rank;
@@ -56,25 +56,25 @@ void dfs(int n) {
 		puts("=================");*/
 
 
-		if (rank[0].score == rank[1].score && rank[1].score == rank[2].score && rank[2].score == rank[3].score) {//ÀüÃ¼ ½ÂÁ¡ ÀÏÄ¡
+		if (rank[0].score == rank[1].score && rank[1].score == rank[2].score && rank[2].score == rank[3].score) {//ì „ì²´ ìŠ¹ì  ì¼ì¹˜
 			for (int t = 0; t < 4; t++)
 				result[rank[t].teamNum] += percent * 0.5;
 		}
-		else if (rank[1].score == rank[2].score && rank[2].score == rank[3].score) {//ÇÏÀ§ 3À§ ÆÀ ½ÂÁ¡ ÀÏÄ¡
+		else if (rank[1].score == rank[2].score && rank[2].score == rank[3].score) {//í•˜ìœ„ 3ìœ„ íŒ€ ìŠ¹ì  ì¼ì¹˜
 			result[rank[0].teamNum] += percent;
 			for (int t = 1; t < 4; t++)
 				result[rank[t].teamNum] += percent * 1.0 / 3.0;
 		}
-		else if (rank[0].score == rank[1].score && rank[1].score == rank[2].score) {//»óÀ§ 3À§ ÆÀ ½ÂÁ¡ ÀÏÄ¡
+		else if (rank[0].score == rank[1].score && rank[1].score == rank[2].score) {//ìƒìœ„ 3ìœ„ íŒ€ ìŠ¹ì  ì¼ì¹˜
 			for (int t = 0; t < 3; t++)
 				result[rank[t].teamNum] += percent * 2.0 / 3.0;
 		}
-		else if (rank[1].score == rank[2].score) {//Áß°£ 2ÆÀ ½ÂÁ¡ ÀÏÄ¡
+		else if (rank[1].score == rank[2].score) {//ì¤‘ê°„ 2íŒ€ ìŠ¹ì  ì¼ì¹˜
 			result[rank[0].teamNum] += percent;
 			for (int t = 1; t < 3; t++)
 				result[rank[t].teamNum] += percent * 0.5;
 		}
-		else {//1-2À§ ¸íÈ®
+		else {//1-2ìœ„ ëª…í™•
 			result[rank[0].teamNum] += percent;
 			result[rank[1].teamNum] += percent;
 		}
@@ -91,14 +91,14 @@ void dfs(int n) {
 				if (T[j].name == M[n].op) {
 					for (int t = 0; t < 3; t++) {
 						double tmp = percent;
-						if (t == 0) {//myÆÀ ½Â¸®
+						if (t == 0) {//myíŒ€ ìŠ¹ë¦¬
 							T[i].score += 3;
 							percent *= M[n].wp;
 							dfs(n + 1);
 							//backtraking
 							T[i].score -= 3;
 						}
-						if (t == 1) {//ºñ±è
+						if (t == 1) {//ë¹„ê¹€
 							T[i].score += 1;
 							T[j].score += 1;
 							percent *= M[n].dp;
@@ -107,7 +107,7 @@ void dfs(int n) {
 							T[i].score -= 1;
 							T[j].score -= 1;
 						}
-						if (t == 2) {//ÆĞ¹è
+						if (t == 2) {//íŒ¨ë°°
 							T[j].score += 3;
 							percent *= M[n].lp;
 							dfs(n + 1);
