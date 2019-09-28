@@ -27,19 +27,19 @@ bool DiagonalChk(int y, int x) {
 	return false;
 }
 
-void dfs(int y, int x, int status) {//status-0:∞°∑Œ, 1: ¥Î∞¢º± 2: ºº∑Œ
+void dfs(int y, int x, int status) {//status-0:Í∞ÄÎ°ú, 1: ÎåÄÍ∞ÅÏÑ† 2: ÏÑ∏Î°ú
 	if (y == N - 1 && x == N - 1) {
 		cnt++;
 		return;
 	}
 	
-	if (status == 0) {//∞°∑Œ
+	if (status == 0) {//Í∞ÄÎ°ú
 		if (HorizontalChk(y, x))
 			dfs(y, x + 1, 0);
 		if (DiagonalChk(y, x))
 			dfs(y + 1, x + 1, 1);
 	}
-	else if (status == 1) {//¥Î∞¢º±
+	else if (status == 1) {//ÎåÄÍ∞ÅÏÑ†
 		if (HorizontalChk(y, x))
 			dfs(y, x + 1, 0);
 		if (DiagonalChk(y, x))
@@ -47,7 +47,7 @@ void dfs(int y, int x, int status) {//status-0:∞°∑Œ, 1: ¥Î∞¢º± 2: ºº∑Œ
 		if (VerticalChk(y, x))
 			dfs(y + 1, x, 2);
 	}
-	else {//ºº∑Œ
+	else {//ÏÑ∏Î°ú
 		if (DiagonalChk(y, x))
 			dfs(y + 1, x + 1, 1);
 		if (VerticalChk(y, x))
