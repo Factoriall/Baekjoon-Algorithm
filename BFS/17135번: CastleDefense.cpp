@@ -63,7 +63,7 @@ void defense() {
 			}
 			q.push(pnt(N - 1, archor[i]));
 			isVisited[N - 1][archor[i]] = true;
-			while (!q.empty() && cnt < D) {//BFS ÁøÇà
+			while (!q.empty() && cnt < D) {//BFS ì§„í–‰
 				int qSize = q.size();
 				for (int t = 0; t < qSize; t++) {
 					pnt point = q.front();
@@ -75,7 +75,7 @@ void defense() {
 						if (ny >= enemyLast && nx >= 0 && nx < M && !isVisited[ny][nx]) {
 							if (copy[ny][nx] != 0) {
 								if (copy[ny][nx] == 1) {
-									copy[ny][nx] = 2;//ÀÌ¹Ì Á×¿´´Ù´Â °ÍÀ» ¾Ë·ÁÁÜ, ³ªÁß¿¡ ¹«½Ã
+									copy[ny][nx] = 2;//ì´ë¯¸ ì£½ì˜€ë‹¤ëŠ” ê²ƒì„ ì•Œë ¤ì¤Œ, ë‚˜ì¤‘ì— ë¬´ì‹œ
 									kill++;
 								}
 								isFinished = true;
@@ -98,12 +98,12 @@ void defense() {
 			}
 
 
-			while (!q.empty())//q ÃÊ±âÈ­
+			while (!q.empty())//q ì´ˆê¸°í™”
 				q.pop();
 		}
 		//printf("enemyLast: %d\n", enemyLast);
 		//printMap(copy);
-		for (int i = N - 2; i >= enemyLast - 1; i--)//ÀûÀ» ¾ÕÀ¸·Î ÇÑÄ­¾¿ ¶¯±â±â
+		for (int i = N - 2; i >= enemyLast - 1; i--)//ì ì„ ì•ìœ¼ë¡œ í•œì¹¸ì”© ë•¡ê¸°ê¸°
 			for (int j = 0; j < M; j++) {
 				if (copy[i][j] == 2)
 					copy[i + 1][j] = 0;
