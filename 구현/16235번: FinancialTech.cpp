@@ -1,8 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
-#include <vector>
-#include <list>
-#include <map>
+#include <deque>
 #include <algorithm>
 using namespace std;
 
@@ -12,7 +10,7 @@ int dx[8] = { 1,1,1,0,-1,-1,-1,0 };
 int ground[10][10];
 int robot[10][10];
 int treeNum[10][10];
-list<int> tree[10][10];
+deque<int> tree[10][10];
 
 int main() {
 	int N, M, K;
@@ -33,22 +31,21 @@ int main() {
 	}
 
 	for (int k = 0; k < K; k++) {
-		//º½, ¿©¸§
+		//ë´„, ì—¬ë¦„
 		
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				if (treeNum[i][j] != 0) {
 					int died = 0;
-					list<int>::iterator it = tree[i][j].begin();
+					deque<int>::iterator it = tree[i][j].begin();
 					for (int& tmp : tree[i][j]) {
-						
 						//printf("%d %d: %d\n", i, j, tmp);
-						if (tmp <= ground[i][j]) {//º½
+						if (tmp <= ground[i][j]) {//ë´„
 							ground[i][j] -= tmp;
 							tmp++;
 							it++;
 						}
-						else {//¿©¸§
+						else {//ì—¬ë¦„
 							died += tmp / 2;
 							treeNum[i][j]--;
 						}
@@ -59,7 +56,7 @@ int main() {
 			}
 		}
 
-		//°¡À»
+		//ê°€ì„
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				if (treeNum[i][j] != 0) {
@@ -77,7 +74,7 @@ int main() {
 			}
 		}
 				
-		//°Ü¿ï
+		//ê²¨ìš¸
 		
 		for (int i = 0; i < N; i++)
 			for (int j = 0; j < N; j++)
