@@ -45,7 +45,7 @@ void dfs(int y, int x) {
 
 					dfs(y, x + t);
 
-					//��Ʈ��ŷ
+					//¹éÆ®·¡Å·
 					matrixNum[t - 1]++;
 					for (int i = y; i < y + t; i++)
 						for (int j = x; j < x + t; j++)
