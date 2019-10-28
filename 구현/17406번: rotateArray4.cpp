@@ -12,16 +12,16 @@ int result = 987654321;
 
 void rotate(int y, int x, int l, int arr[][50]) {
 	int tmp = arr[y - l][x - l];
-	for (int i = y - l + 1; i <= y + l; i++) {//¿ŞÂÊ 
+	for (int i = y - l + 1; i <= y + l; i++) {//Â¿ÃÃ‚ÃŠ 
 		arr[i - 1][x - l] = arr[i][x - l];
 	}
-	for (int i = x - l + 1; i <= x + l; i++) {//¾Æ·¡ 
+	for (int i = x - l + 1; i <= x + l; i++) {//Â¾Ã†Â·Â¡ 
 		arr[y + l][i - 1] = arr[y + l][i];
 	}
-	for (int i = y + l - 1; i >= y - l; i--) {//¿À¸¥ÂÊ
+	for (int i = y + l - 1; i >= y - l; i--) {//Â¿Ã€Â¸Â¥Ã‚ÃŠ
 		arr[i + 1][x + l] = arr[i][x + l];
 	}
-	for (int i = x + l - 1; i > x - l; i--) {//À§ 
+	for (int i = x + l - 1; i > x - l; i--) {//Ã€Â§ 
 		arr[y - l][i + 1] = arr[y - l][i];
 	}
 	arr[y - l][x - l + 1] = tmp;
