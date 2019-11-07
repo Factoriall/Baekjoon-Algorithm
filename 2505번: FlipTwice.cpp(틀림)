@@ -5,7 +5,7 @@ using namespace std;
 
 struct P {
 	int start, end;
-	int status;//0: s=e¿©¼­ ¾Ë ¼ö ¾øÀ½, 1: -2 Â÷ÀÌ, 2: ¼ö°¡ °°À½
+	int status;//0: s=eì—¬ì„œ ì•Œ ìˆ˜ ì—†ìŒ, 1: -2 ì°¨ì´, 2: ìˆ˜ê°€ ê°™ìŒ
 	P(){};
 	P(int s, int e, int st) : start(s), end(e), status(st) {}
 };
@@ -22,9 +22,9 @@ int main() {
 		h[i] = num - 1 - i;
 	}
 
-	int cNum = 0;//Æ¯Â¡À» °¡Áö´Â ¸ğÀÓµé °³¼ö
+	int cNum = 0;//íŠ¹ì§•ì„ ê°€ì§€ëŠ” ëª¨ì„ë“¤ ê°œìˆ˜
 
-	//¸ğÀÓµé ÀúÀå
+	//ëª¨ì„ë“¤ ì €ì¥
 	for (int i = 0; i < N; i++) {
 		if (h[i] != 0) {
 			int s = i;
@@ -68,14 +68,14 @@ int main() {
 		printf("%d %d %d\n", cluster[i].start, cluster[i].end, cluster[i].status);
 	}
 	
-	//status - 0: s=e¿©¼­ ¾Ë ¼ö ¾øÀ½, 1: -2 Â÷ÀÌ, 2: ¼ö°¡ °°À½
-	if (cNum == 0) {//Ã³À½ºÎÅÍ Á¤´ä
+	//status - 0: s=eì—¬ì„œ ì•Œ ìˆ˜ ì—†ìŒ, 1: -2 ì°¨ì´, 2: ìˆ˜ê°€ ê°™ìŒ
+	if (cNum == 0) {//ì²˜ìŒë¶€í„° ì •ë‹µ
 		printf("1 1\n1 1\n");
 	}
-	else if (cNum == 1) {//ÇÏ³ª¸¸ µÚÁıÀ¸¸é µË´Ï´Ù.
+	else if (cNum == 1) {//í•˜ë‚˜ë§Œ ë’¤ì§‘ìœ¼ë©´ ë©ë‹ˆë‹¤.
 		printf("1 1\n%d %d\n", cluster[0].start + 1, cluster[0].end + 1);
 	}
-	else if (cNum == 2) {//2°³ µÚÁı±â
+	else if (cNum == 2) {//2ê°œ ë’¤ì§‘ê¸°
 		if (cluster[0].status == 1 && cluster[1].status == 1) {
 			printf("%d %d\n%d %d\n", cluster[0].start + 1, cluster[0].end + 1, cluster[1].start + 1, cluster[1].end + 1);
 		}
@@ -88,8 +88,8 @@ int main() {
 			}
 		}
 	}
-	//status - 0: s=e¿©¼­ ¾Ë ¼ö ¾øÀ½, 1: -2 Â÷ÀÌ, 2: ¼ö°¡ °°À½
-	else {//3°³ µÚÁı±â
+	//status - 0: s=eì—¬ì„œ ì•Œ ìˆ˜ ì—†ìŒ, 1: -2 ì°¨ì´, 2: ìˆ˜ê°€ ê°™ìŒ
+	else {//3ê°œ ë’¤ì§‘ê¸°
 		if (cluster[0].status == 2) {
 			printf("%d %d\n%d %d\n", cluster[0].start + 1, cluster[1].end + 1, cluster[2].start - (cluster[0].end - cluster[0].start + 1) + 1, cluster[2].end + 1);
 		}
