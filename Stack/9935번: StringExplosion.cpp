@@ -14,20 +14,20 @@ int main() {
 	cin >> str;
 	cin >> cmp;
 
-	int n = cmp.size();//½ºÅÃÀÇ Æ¯¼º»ó µÚ¿¡¼­ ½ÃÀÛÀÌ ÆíÇØº¸ÀÓ
-	for (int i = str.size() - 1; i >= 0; i--) {//strÀÇ Å½»ö
+	int n = cmp.size();//ìŠ¤íƒì˜ íŠ¹ì„±ìƒ ë’¤ì—ì„œ ì‹œì‘ì´ í¸í•´ë³´ì„
+	for (int i = str.size() - 1; i >= 0; i--) {//strì˜ íƒìƒ‰
 		//cout << "str: " << str[i] << ", cmp: " << cmp[n-1] << '\n';
-		if (str[i] != cmp[n - 1]) {//ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é ±×´ë·Î ½ºÅÃ¿¡ ³Ö±â
+		if (str[i] != cmp[n - 1]) {//ì¼ì¹˜í•˜ì§€ ì•Šìœ¼ë©´ ê·¸ëŒ€ë¡œ ìŠ¤íƒì— ë„£ê¸°
 			//cout << n << ", " << str[i] << '\n';
 			if (str[i] != cmp[cmp.size() - 1]) {
-				n = cmp.size();//ÃÊ±âÈ­
+				n = cmp.size();//ì´ˆê¸°í™”
 			}
 			else {
-				n = cmp.size() - 1;//ÃÊ±âÈ­
+				n = cmp.size() - 1;//ì´ˆê¸°í™”
 			}
 			st.push(P(n, str[i]));
 		}
-		else {//°°À» ½Ã ¼ıÀÚ ÀúÀå
+		else {//ê°™ì„ ì‹œ ìˆ«ì ì €ì¥
 			//cout << n - 1 << ", " << str[i] << '\n';
 			st.push(P(n - 1, str[i]));
 			n--;
