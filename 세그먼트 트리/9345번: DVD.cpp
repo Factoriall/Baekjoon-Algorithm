@@ -12,11 +12,11 @@ typedef pair<int, int> P;
 P arr[262145];
 
 
-//L,R : ¿ø·¡ ¿ì¸®°¡ ±¸ÇÏ·Á Çß´ø ¹üÀ§
-//nodeNum: ÇöÀç º¸°í ÀÖ´Â ³ëµå ¹øÈ£
-//nodeL, nodeR: nodeNumÀÌ Æ÷ÇÔÇÏ´Â ±¸°£
+//L,R : ì›ë˜ ìš°ë¦¬ê°€ êµ¬í•˜ë ¤ í–ˆë˜ ë²”ìœ„
+//nodeNum: í˜„ì¬ ë³´ê³  ìˆëŠ” ë…¸ë“œ ë²ˆí˜¸
+//nodeL, nodeR: nodeNumì´ í¬í•¨í•˜ëŠ” êµ¬ê°„
 
-//¼¼±×¸ÕÆ® Æ®¸® ¹üÀ§ Áß ÃÖ¼Ú°ª ÃßÃâ
+//ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ ë²”ìœ„ ì¤‘ ìµœì†Ÿê°’ ì¶”ì¶œ
 int minNum(int L, int R, int nodeNum, int nodeL, int nodeR) {
 	if (R < nodeL || nodeR < L) return MAX;
 	if (L <= nodeL && nodeR <= R) return arr[nodeNum].first;
@@ -24,7 +24,7 @@ int minNum(int L, int R, int nodeNum, int nodeL, int nodeR) {
 	return min(minNum(L, R, nodeNum * 2, nodeL, mid), minNum(L, R, nodeNum * 2 + 1, mid + 1, nodeR));
 }
 
-//¼¼±×¸ÕÆ® Æ®¸® ¹üÀ§ Áß ÃÖ´ñ°ª ÃßÃâ
+//ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ ë²”ìœ„ ì¤‘ ìµœëŒ“ê°’ ì¶”ì¶œ
 int maxNum(int L, int R, int nodeNum, int nodeL, int nodeR) {
 	if (R < nodeL || nodeR < L) return MIN;
 	if (L <= nodeL && nodeR <= R) return arr[nodeNum].second;
@@ -44,7 +44,7 @@ void update(int i) {
 
 void construct() {
 	for (int i = S - 1; i > 0; --i) {
-		//¹üÀ§¿¡¼­ÀÇ ÃÖ´ë°ª ¹× ÃÖ¼Ò°ª »ğÀÔ
+		//ë²”ìœ„ì—ì„œì˜ ìµœëŒ€ê°’ ë° ìµœì†Œê°’ ì‚½ì…
 		arr[i] = P(min(arr[i * 2].first, arr[i * 2 + 1].first),
 			max(arr[i * 2].second, arr[i * 2 + 1].second));
 	}
@@ -76,11 +76,11 @@ int main() {
 			S *= 2;
 
 		for (int i = S; i < S + N; i++) {
-			//iÀÇ À§Ä¡¿¡ ¾î¶² ¹øÈ£ÀÇ Ã¥ÀÌ ÀÖ´Â°¡ ±â·Ï
-			arr[i] = P(i - S, i - S);//Ã³À½Àº MIN, MAX °ª °°À½
+			//iì˜ ìœ„ì¹˜ì— ì–´ë–¤ ë²ˆí˜¸ì˜ ì±…ì´ ìˆëŠ”ê°€ ê¸°ë¡
+			arr[i] = P(i - S, i - S);//ì²˜ìŒì€ MIN, MAX ê°’ ê°™ìŒ
 		}
 		for (int i = S + N; i < 2 * S; i++) {
-			//³ª¸ÓÁö ³ª¿Ã ¼ö ¾ø´Â °ªÀ¸·Î Ã¤¿ò
+			//ë‚˜ë¨¸ì§€ ë‚˜ì˜¬ ìˆ˜ ì—†ëŠ” ê°’ìœ¼ë¡œ ì±„ì›€
 			arr[i] = P(MAX, MIN);
 		}
 		construct();
@@ -90,7 +90,7 @@ int main() {
 		for (int i = 0; i < K; i++) {
 			int q, a, b;
 			scanf("%d %d %d", &q, &a, &b);
-			if (q) {//¼Õ´Ô µğ½ºÅ© ²¨³»±â
+			if (q) {//ì†ë‹˜ ë””ìŠ¤í¬ êº¼ë‚´ê¸°
 				//printf("min: %d, max: %d\n", minNum(a, b, 1, 0, S - 1), maxNum(a, b, 1, 0, S - 1));
 				if (minNum(a, b, 1, 0, S - 1) >= a && maxNum(a, b, 1, 0, S - 1) <= b) {
 					puts("YES");
@@ -98,7 +98,7 @@ int main() {
 				else
 					puts("NO");
 			}
-			else {//Áø»óÀÌ ¼ø¼­ ¹Ù²Ù±â
+			else {//ì§„ìƒì´ ìˆœì„œ ë°”ê¾¸ê¸°
 				P tmp = arr[S + a];
 				arr[S + a] = arr[S + b];
 				arr[S + b] = tmp;
