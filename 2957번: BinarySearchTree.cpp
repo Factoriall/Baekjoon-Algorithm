@@ -25,7 +25,7 @@ int main() {
 		//printf("%d %d\n", prevIter->second, nextIter->second);
 		depth = max(prevIter->second, nextIter->second) + 1;
 			
-		m.insert(P(num, depth));//¼ıÀÚ¸¦ ¸Ê¿¡ »ğÀÔ = depth;
+		m.insert(P(num, depth));//Â¼Ã½Ã€ÃšÂ¸Â¦ Â¸ÃŠÂ¿Â¡ Â»Ã°Ã€Ã” = depth;
 		cnt += depth;
 		printf("%lld\n", cnt);
 	}
