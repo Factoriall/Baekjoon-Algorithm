@@ -9,7 +9,7 @@ int main() {
 
 	for (int t = 0; t < T; t++) {
 		int N, L;
-		double result = 101;//°á°ú´Â ¹«Á¶°Ç 101À» ³ÑÁö ¾Ê´Â´Ù.
+		double result = 101;//ê²°ê³¼ëŠ” ë¬´ì¡°ê±´ 101ì„ ë„˜ì§€ ì•ŠëŠ”ë‹¤.
 		int schedule[1001] = { 0, };
 
 		scanf("%d %d", &N, &L);
@@ -18,15 +18,15 @@ int main() {
 			scanf("%d", &schedule[i]);
 
 		for (int l = L; l <= N; l++) {
-			int sum = 0;//ÀüÃ¼ ÇÕ
-			for (int i = 0; i < l; i++)//0-(l-1) ¹üÀ§ °ª ¹Ì¸® ³Ö±â
+			int sum = 0;//ì „ì²´ í•©
+			for (int i = 0; i < l; i++)//0-(l-1) ë²”ìœ„ ê°’ ë¯¸ë¦¬ ë„£ê¸°
 				sum += schedule[i];
 			//printf("%d\n", sum);
 
 			int mini = sum;
 
-			for (int i = l; i < N; i++) {//³¡±îÁö Å½»öÇØ¼­ °¡Àå ÀÛÀº ¹­À½ Ã£±â
-				sum = sum + schedule[i] - schedule[i - l];//´ÙÀ½°Å ´õÇÏ°í ¿ÞÂÊ Á¦°Å
+			for (int i = l; i < N; i++) {//ëê¹Œì§€ íƒìƒ‰í•´ì„œ ê°€ìž¥ ìž‘ì€ ë¬¶ìŒ ì°¾ê¸°
+				sum = sum + schedule[i] - schedule[i - l];//ë‹¤ìŒê±° ë”í•˜ê³  ì™¼ìª½ ì œê±°
 				//printf("%d\n", sum);
 				mini = min(sum, mini);
 			}
