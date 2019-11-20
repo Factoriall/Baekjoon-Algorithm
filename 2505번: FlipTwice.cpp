@@ -24,9 +24,9 @@ int main() {
 	copyArr(cpy, arr);
 	int cnt = 0;
 	bool isFinished = true;
-	for (int i = 1; i <= N; i++) {//¿ŞÂÊºÎÅÍ ¼ø¹æÇâÀ¸·Î 2¹ø µÚÁı±â ½Ãµµ
+	for (int i = 1; i <= N; i++) {//ì™¼ìª½ë¶€í„° ìˆœë°©í–¥ìœ¼ë¡œ 2ë²ˆ ë’¤ì§‘ê¸° ì‹œë„
 		if (cpy[i] != i) {
-			if (cnt == 2) {//2¹øº¸´Ù ´õ ³ª¿Â´Ù¸é ½ÇÆĞ
+			if (cnt == 2) {//2ë²ˆë³´ë‹¤ ë” ë‚˜ì˜¨ë‹¤ë©´ ì‹¤íŒ¨
 				isFinished = false;
 				break;
 			}
@@ -34,7 +34,7 @@ int main() {
 			int d;
 			if (cpy[i] > i) {
 				d = i + 1;
-				while (cpy[d] != i)//i°¡ Æ÷ÇÔµÇ¾îÀÖ´Â dÀÇ À§Ä¡ Å½»ö
+				while (cpy[d] != i)//iê°€ í¬í•¨ë˜ì–´ìˆëŠ” dì˜ ìœ„ì¹˜ íƒìƒ‰
 					d++;
 
 				reverse(cpy + i, cpy + d + 1);
@@ -42,7 +42,7 @@ int main() {
 			}
 			else {
 				int d = i - 1;
-				while (cpy[d] != i)//i°¡ Æ÷ÇÔµÇ¾îÀÖ´Â dÀÇ À§Ä¡ Å½»ö
+				while (cpy[d] != i)//iê°€ í¬í•¨ë˜ì–´ìˆëŠ” dì˜ ìœ„ì¹˜ íƒìƒ‰
 					d--;
 
 				reverse(cpy + d, cpy + i + 1);
@@ -52,17 +52,17 @@ int main() {
 	}
 
 	
-	if (!isFinished) {//¿ŞÂÊ ¹æÇâ ½ÇÆĞ ½Ã ¿À¸¥ÂÊ ¹æÇâÀ¸·Î ½Ãµµ
-		/* ÃÊ±âÈ­ */
+	if (!isFinished) {//ì™¼ìª½ ë°©í–¥ ì‹¤íŒ¨ ì‹œ ì˜¤ë¥¸ìª½ ë°©í–¥ìœ¼ë¡œ ì‹œë„
+		/* ì´ˆê¸°í™” */
 		copyArr(cpy, arr);
 		cnt = 0;
 
-		for (int i = N; i >= 1; i--) {//¿À¸¥ÂÊºÎÅÍ ¿ª¹æÇâÀ¸·Î 2¹ø µÚÁı±â ½Ãµµ
+		for (int i = N; i >= 1; i--) {//ì˜¤ë¥¸ìª½ë¶€í„° ì—­ë°©í–¥ìœ¼ë¡œ 2ë²ˆ ë’¤ì§‘ê¸° ì‹œë„
 			if (cpy[i] != i) {
 				int d;
 				if (cpy[i] > i) {
 					d = i + 1;
-					while (cpy[d] != i)//i°¡ Æ÷ÇÔµÇ¾îÀÖ´Â dÀÇ À§Ä¡ Å½»ö
+					while (cpy[d] != i)//iê°€ í¬í•¨ë˜ì–´ìˆëŠ” dì˜ ìœ„ì¹˜ íƒìƒ‰
 						d++;
 
 					reverse(cpy + i, cpy + d + 1);
@@ -70,7 +70,7 @@ int main() {
 				}
 				else {
 					int d = i - 1;
-					while (cpy[d] != i)//i°¡ Æ÷ÇÔµÇ¾îÀÖ´Â dÀÇ À§Ä¡ Å½»ö
+					while (cpy[d] != i)//iê°€ í¬í•¨ë˜ì–´ìˆëŠ” dì˜ ìœ„ì¹˜ íƒìƒ‰
 						d--;
 
 					reverse(cpy + d, cpy + i + 1);
