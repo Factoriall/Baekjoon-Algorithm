@@ -25,7 +25,7 @@ void printMap() {
 	printf("\n");
 }
 
-void dummy_game(int y, int x, int d, int sec) {//y,x: ¹ì ¸Ó¸® À§Ä¡, dir: ÀÌµ¿¹æÇâ, cnt: ÇöÀç½Ã°£
+void dummy_game(int y, int x, int d, int sec) {//y,x: ë±€ ë¨¸ë¦¬ ìœ„ì¹˜, dir: ì´ë™ë°©í–¥, cnt: í˜„ì¬ì‹œê°„
 	if (map[y][x] == 1 || y == 0 || x == 0 || y == N + 1 || x == N + 1) {
 		printf("%d\n", sec);
 		return;
@@ -56,7 +56,7 @@ int main() {
 	for (int i = 0; i < K; i++) {
 		int n, m;
 		scanf("%d %d", &n, &m);
-		map[n][m] = 2;//»ç°ú À§Ä¡
+		map[n][m] = 2;//ì‚¬ê³¼ ìœ„ì¹˜
 	}
 
 	scanf("%d", &L);
@@ -68,8 +68,8 @@ int main() {
 		dir_change[i] = c;
 	}
 
-	map[1][1] = 1;//¹ì À§Ä¡
+	map[1][1] = 1;//ë±€ ìœ„ì¹˜
 	snake.push(P(1, 1));
 
-	dummy_game(1, 2, 0, 1); // ¹Ì¸® ÀÌµ¿ÇØ¼­ ½ÃÀÛ
+	dummy_game(1, 2, 0, 1); // ë¯¸ë¦¬ ì´ë™í•´ì„œ ì‹œì‘
 }
