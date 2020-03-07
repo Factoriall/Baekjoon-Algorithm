@@ -20,8 +20,7 @@ int dynamic_programming(int curr) {
 	int mx = 0;
 	for (int prev : inv[curr]) 
 		mx = max(mx, build_time[curr] + dynamic_programming(prev));
-	
-	printf("ret: %d\n", mx);
+
 	return ret = mx;
 }
 
@@ -46,12 +45,6 @@ int main() {
 
 		scanf("%d", &W);
 		printf("%d\n", dynamic_programming(W-1));
-
-		/*for (int i = 0; i < N; i++) {
-			
-			printf("%d, ", memo[i]);
-		}
-		printf("\n");*/
 
 		for (int i = 0; i < N; i++) {
 			inv[i].clear();
