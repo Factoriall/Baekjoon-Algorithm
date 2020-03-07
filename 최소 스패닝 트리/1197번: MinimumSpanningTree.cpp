@@ -4,15 +4,15 @@
 #include <algorithm>
 using namespace std;
 
-int uf[10000]; // union-find ¹è¿­
+int uf[10000]; // union-find ë°°ì—´
 
-// union-findÀÇ find ¿¬»ê
+// union-findì˜ find ì—°ì‚°
 int find(int a) {
 	if (uf[a] < 0) return a;
 	return uf[a] = find(uf[a]);
 }
 
-// union-findÀÇ union ¿¬»ê
+// union-findì˜ union ì—°ì‚°
 bool merge(int a, int b) {
 	a = find(a);
 	b = find(b);
@@ -21,7 +21,7 @@ bool merge(int a, int b) {
 	return true;
 }
 
-// °£¼± ±¸Á¶Ã¼. w ±âÁØÀ¸·Î Á¤·ÄµÊ
+// ê°„ì„  êµ¬ì¡°ì²´. w ê¸°ì¤€ìœ¼ë¡œ ì •ë ¬ë¨
 struct Edge {
 	int u, v, w;
 	Edge() : Edge(-1, -1, 0) {}
